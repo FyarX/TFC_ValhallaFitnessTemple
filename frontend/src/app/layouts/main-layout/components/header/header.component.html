@@ -1,18 +1,22 @@
-<header>
-    <div class="header_logo">
-        <img src="assets/images/logo.png" alt="Logo" />
-    </div>
-    <nav id="header_nav">
+<header class="flex items-center justify-between p-3 text-white bg-black" id="header">
+    <section class="flex items-center gap-2" id="header_logo">
+        <img src="/img/logo_vanilla.png" alt="Logo" class="w-10 h-10" />
+        <div class="flex-col gap-4 text-left" id="header_logo_text">
+            <p class="m-0 text-lg leading-none font-anton text-gold">Valhalla</p>
+            <p class="m-0 text-xs leading-none font-anton">Fitness Temple</p>
+        </div>
+    </section>
+    <nav class="flex" id="header_nav">
         
-        <ul>
+        <ul class="flex gap-4 text-[10px] font-montserrat" id="header_nav_list">
             <li><a routerLink="/home">Home</a></li>
             <li><a routerLink="/about">About</a></li>
             <li><a routerLink="/services">Services</a></li>
             <li><a routerLink="/contact">Contact</a></li>
         </ul>
     </nav>
-    <section id="header_actions">
-        <button id="login_button">Login</button>
-        <button id="signup_button">Sign Up</button>
+    <section id="header_actions" class="flex gap-4">
+        <button id="login_button" class="p-1.5 text-[10px] border-2 border-gold font-montserrat hover:text-black hover:bg-gold transition-colors duration-500">Login</button>
+        <button id="signup_button" class="p-1.5 text-[10px] border-2 border-gold font-montserrat hover:text-black hover:bg-gold transition-colors duration-500">Sign Up</button>
     </section>
 </header>
