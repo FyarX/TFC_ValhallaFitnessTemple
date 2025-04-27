@@ -1,14 +1,14 @@
-<header class="flex items-center justify-between p-3 text-white bg-black" id="header">
+<header class="flex items-center justify-around p-3 text-white bg-gradient-to-br from-black via-gray-900 to-black" id="header">
     <section class="flex items-center gap-2" id="header_logo">
         <img src="/img/logo_vanilla.png" alt="Logo" class="w-10 h-10" />
         <div class="flex-col gap-4 text-left" id="header_logo_text">
-            <p class="m-0 text-lg leading-none font-anton text-gold">Valhalla</p>
+            <p class="m-0 text-lg leading-none text-transparent font-anton bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-700 bg-clip-text">Valhalla</p>
             <p class="m-0 text-xs leading-none font-anton">Fitness Temple</p>
         </div>
     </section>
     <nav class="flex" id="header_nav">
-        
-        <ul class="flex gap-4 text-[10px] font-montserrat" id="header_nav_list">
+        <lucide-icon name="menu" class="w-6 h-6 text-white cursor-pointer" id="header_menu_icon"></lucide-icon>
+        <ul class="flex gap-4 text-xs font-montserrat" id="header_nav_list">
             <li><a routerLink="/home">Home</a></li>
             <li><a routerLink="/about">About</a></li>
             <li><a routerLink="/services">Services</a></li>
@@ -16,7 +16,7 @@
         </ul>
     </nav>
     <section id="header_actions" class="flex gap-4">
-        <button id="login_button" class="p-1.5 text-[10px] border-2 border-gold font-montserrat hover:text-black hover:bg-gold transition-colors duration-500">Login</button>
-        <button id="signup_button" class="p-1.5 text-[10px] border-2 border-gold font-montserrat hover:text-black hover:bg-gold transition-colors duration-500">Sign Up</button>
+        <button id="login_button" class="p-1.5 text-[10px] border-2 border-gold font-montserrat hover:text-black hover:bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-700 transition-colors duration-500">Login</button>
+        <button id="signup_button" class="p-1.5 text-[10px] border-2 border-gold font-montserrat hover:text-black hover:bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-700 transition-colors duration-500">Sign Up</button>
     </section>
 </header>

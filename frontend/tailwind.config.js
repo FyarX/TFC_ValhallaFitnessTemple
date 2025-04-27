@@ -12,6 +12,7 @@ module.exports = {
       },
       colors: {
         'gold': '#FFD700',
+        'negro_mate': '#28282B'
       },
     },
   },
