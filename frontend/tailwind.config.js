@@ -14,6 +14,11 @@ module.exports = {
         'gold': '#FFD700',
         'negro_mate': '#28282B'
       },
+      screens: {
+        'movil': {'max':'600px'},
+        'movil_pequeno': {'max':'450px'},
+        'tablet': {'min':'450px','max': '850px'}
+      }
     },
   },
   plugins: [],

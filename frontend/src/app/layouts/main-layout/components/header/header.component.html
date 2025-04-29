@@ -1,22 +1,156 @@
-<header class="flex items-center justify-around p-3 text-white bg-gradient-to-br from-black via-gray-900 to-black" id="header">
-    <section class="flex items-center gap-2" id="header_logo">
+<header
+  id="header"
+  class="flex items-center justify-between p-3 text-white bg-gradient-to-br from-black via-gray-900 to-black"
+>
+  <section
+    id="header_container"
+    class="flex items-center justify-between w-10/12 max-w-screen-lg mx-auto tablet:w-11/12 movil_pequeno:w-full"
+  >
+    <!-- ▸ Logo -------------------------------------------------------- -->
+    <section id="header_logo" class="flex items-center gap-2">
+      <a routerLink="/inicio">
         <img src="/img/logo_vanilla.png" alt="Logo" class="w-10 h-10" />
-        <div class="flex-col gap-4 text-left" id="header_logo_text">
-            <p class="m-0 text-lg leading-none text-transparent font-anton bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-700 bg-clip-text">Valhalla</p>
-            <p class="m-0 text-xs leading-none font-anton">Fitness Temple</p>
-        </div>
+      </a>
+
+      <div id="header_logo_text" class="flex-col gap-4 text-left">
+        <p
+          class="m-0 text-lg leading-none text-transparent font-anton bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-700 bg-clip-text"
+        >
+          Valhalla
+        </p>
+        <p class="m-0 text-xs leading-none font-anton">Fitness Temple</p>
+      </div>
     </section>
-    <nav class="flex" id="header_nav">
-        <lucide-icon name="menu" class="w-6 h-6 text-white cursor-pointer" id="header_menu_icon"></lucide-icon>
-        <ul class="flex gap-4 text-xs font-montserrat" id="header_nav_list">
-            <li><a routerLink="/home">Home</a></li>
-            <li><a routerLink="/about">About</a></li>
-            <li><a routerLink="/services">Services</a></li>
-            <li><a routerLink="/contact">Contact</a></li>
-        </ul>
+
+    <!-- ▸ Navegación --------------------------------------------------- -->
+    <nav id="header_nav" class="relative">
+      <!-- Icono menú (≤ 640 px) -->
+      <lucide-icon
+        name="menu"
+        class="block text-white cursor-pointer w-7 h-7 md:hidden"
+        (click)="toggleMenu()"
+      ></lucide-icon>
+
+      <!-- Barra de navegación horizontal (≥ 640 px) -->
+      <ul class="hidden gap-8 text-xs font-montserrat md:flex">
+        <li class="group">
+          <a routerLink="/inicio" class="relative inline-block transition duration-300 ease-in hover:scale-110">
+            Inicio
+            <span
+              class="absolute inset-x-0 bottom-[-4px] h-0.5 origin-right scale-x-0 bg-yellow-500 transition-transform duration-300 group-hover:origin-left group-hover:scale-x-100"
+            ></span>
+          </a>
+        </li>
+
+        <li class="group">
+          <a routerLink="/maquinas" class="relative inline-block transition duration-300 ease-in hover:scale-110">
+            Máquinas
+            <span
+              class="absolute inset-x-0 bottom-[-4px] h-0.5 origin-right scale-x-0 bg-yellow-500 transition-transform duration-300 group-hover:origin-left group-hover:scale-x-100"
+            ></span>
+          </a>
+        </li>
+
+        <li class="group">
+          <a routerLink="/tienda" class="relative inline-block transition duration-300 ease-in hover:scale-110">
+            Tienda
+            <span
+              class="absolute inset-x-0 bottom-[-4px] h-0.5 origin-right scale-x-0 bg-yellow-500 transition-transform duration-300 group-hover:origin-left group-hover:scale-x-100"
+            ></span>
+          </a>
+        </li>
+
+        <li class="group">
+          <a routerLink="/contacto" class="relative inline-block transition duration-300 ease-in hover:scale-110">
+            Contacto
+            <span
+              class="absolute inset-x-0 bottom-[-4px] h-0.5 origin-right scale-x-0 bg-yellow-500 transition-transform duration-300 group-hover:origin-left group-hover:scale-x-100"
+            ></span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Menú desplegable (≤ 640 px) -->
+      <ul class="absolute right-[-67px] z-50 w-40 p-4 mt-3 space-y-4 overflow-hidden text-sm transition-transform duration-300 origin-top transform scale-y-0 shadow-lg opacity-0 pointer-events-none bg-gray-950/95 backdrop-blur rounded-xl font-montserrat md:hidden"
+      [class.scale-y-100]="openMenu"
+      [class.opacity-100]="openMenu"
+      [class.pointer-events-auto]="openMenu"
+      (click)="closeMenu()">
+
+        <li class="group">
+          <a routerLink="/inicio" class="relative inline-block transition duration-300 ease-in hover:scale-110">
+            Inicio
+          </a>
+        </li>
+        <li class="group">
+          <a routerLink="/maquinas" class="relative inline-block transition duration-300 ease-in hover:scale-110">
+            Máquinas
+          </a>
+        </li>
+        <li class="group">
+          <a routerLink="/tienda" class="relative inline-block transition duration-300 ease-in hover:scale-110">
+            Tienda
+          </a>
+        </li>
+        <li class="group">
+          <a routerLink="/contacto" class="relative inline-block transition duration-300 ease-in hover:scale-110">
+            Contacto
+          </a>
+        </li>
+      </ul>
     </nav>
-    <section id="header_actions" class="flex gap-4">
-        <button id="login_button" class="p-1.5 text-[10px] border-2 border-gold font-montserrat hover:text-black hover:bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-700 transition-colors duration-500">Login</button>
-        <button id="signup_button" class="p-1.5 text-[10px] border-2 border-gold font-montserrat hover:text-black hover:bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-700 transition-colors duration-500">Sign Up</button>
+
+    <!-- ▸ Acciones / usuario ----------------------------------------- -->
+    <section id="header_actions" class="relative flex items-center gap-4">
+      <!-- Icono de usuario (solo se muestra si el usuario está loggeado) -->
+      <lucide-icon
+        *ngIf="isLoggedIn()" 
+        name="circle_user"
+        class="text-white cursor-pointer w-7 h-7"
+        (click)="toggleUserMenu()"
+      ></lucide-icon>
+
+      <!-- Menú usuario -->
+      <ul
+        class="absolute right-0 hidden w-40 p-4 mt-2 space-y-3 text-sm transition-transform duration-300 origin-top translate-x-2 border border-yellow-700 shadow-lg rounded-xl bg-gray-950/95 font-montserrat backdrop-blur md:translate-x-4"
+        [class.hidden]="!openUserMenu"
+        [class.scale-y-0]="!openUserMenu"
+        [class.scale-y-100]="openUserMenu"
+        (click)="closeUserMenu()"
+      >
+        <li><a routerLink="/profile">Perfil</a></li>
+        <li><a routerLink="/settings">Mis clases</a></li>
+        <li><a routerLink="IMPLEMENTAR CIERRE SESION">Cerrar sesión</a></li>
+      </ul>
+
+
+      <!-- Botón: Iniciar sesión -->
+      <button
+        class="relative overflow-hidden rounded-lg border-2 border-gold p-1.5 text-[10px] font-montserrat text-white transition-colors duration-500 group"
+      >
+        <span
+          class="relative z-10 transition-colors duration-500 group-hover:text-black"
+        >
+          Iniciar sesión
+        </span>
+        <span
+          class="absolute inset-0 transition-opacity duration-500 opacity-0 -z-0 bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-700 group-hover:opacity-100"
+        ></span>
+      </button>
+
+      <!-- Botón: Registrarse -->
+      <button
+        class="relative overflow-hidden rounded-lg border-2 border-gold p-1.5 text-[10px] font-montserrat text-white transition-colors duration-500 group"
+      >
+        <span
+          class="relative z-10 transition-colors duration-500 group-hover:text-black"
+        >
+          Registrarse
+        </span>
+        <span
+          class="absolute inset-0 transition-opacity duration-500 opacity-0 -z-0 bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-700 group-hover:opacity-100"
+        ></span>
+      </button>
     </section>
-</header>
+  </section>
+</header> 
