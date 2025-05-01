@@ -1,6 +1,21 @@
-<footer id="footer" class="flex items-center justify-between p-3 text-white bg-gradient-to-br from-black via-gray-900 to-black">
-    <section id="footer_container">
-        <fa-icon [icon]="['fab', 'facebook']" class="w-6 h-6 text-blue-600 transition-colors duration-300 hover:text-blue-800"></fa-icon>
-        <p>Hola</p>
+<footer id="footer" class="text-white bg-gradient-to-br from-black via-gray-900 to-black">
+    <section id="footer_container" class="flex flex-col items-center justify-center w-full gap-5 py-4">
+        <article id="footer_social_media" class="flex items-center gap-3">
+            <fa-icon [icon]="['fab', 'facebook']" class="text-3xl text-blue-600 transition-colors duration-300 hover:text-blue-800"></fa-icon>
+            <fa-icon [icon]="['fab', 'twitter']" class="text-3xl text-blue-400 transition-colors duration-300 hover:text-blue-600"></fa-icon>
+            <fa-icon [icon]="['fab', 'instagram']" class="text-3xl text-pink-500 transition-colors duration-300 hover:text-pink-700"></fa-icon>
+            <fa-icon [icon]="['fab', 'linkedin']" class="text-3xl text-blue-700 transition-colors duration-300 hover:text-blue-900"></fa-icon>
+        </article>
+        <!-- Al tener resolucion pequeña se muestran los elementos en 2 filas -->
+        <article id="footer_navbar" class="flex items-center justify-between gap-3 max-w-11/12 movil:flex-wrap movil:justify-center"> 
+            <a routerLink="/politica-privacidad" class="text-sm text-gray-400 transition-colors duration-300 hover:text-white">Política de Privacidad</a>
+            <a routerLink="/terminos-servicio" class="text-sm text-gray-400 transition-colors duration-300 hover:text-white">Términos de Servicio</a>
+            <a routerLink="/cookies" class="text-sm text-gray-400 transition-colors duration-300 hover:text-white">Política de Cookies</a>
+            <a routerLink="/aviso-legal" class="text-sm text-gray-400 transition-colors duration-300 hover:text-white">Aviso Legal</a>
+            <a routerLink="/contacto" class="text-sm text-gray-400 transition-colors duration-300 hover:text-white">Contacto</a>
+        </article>
+        <!-- Linea horizontal de separación entre ambas partes -->
+        <div class="block w-11/12 h-px bg-gray-600"></div>
+        <span id="footer_copyright" class="text-sm text-gray-400">© 2025 FyarX Development. Todos los derechos reservados.</span>
     </section>
 </footer>
