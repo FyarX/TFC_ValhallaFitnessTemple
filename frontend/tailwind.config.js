@@ -18,7 +18,16 @@ module.exports = {
         'movil': {'max':'600px'},
         'movil_pequeno': {'max':'450px'},
         'tablet': {'min':'450px','max': '850px'}
-      }
+      },
+      animation: {
+        'fade-in': 'fadeIn 1s ease-out both',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: 0, transform: 'translateY(-10px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
+      },
     },
   },
   plugins: [],

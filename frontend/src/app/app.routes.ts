@@ -4,6 +4,8 @@ import { InicioComponent } from './pages/inicio/inicio.component';
 import { MaquinasComponent } from './pages/maquinas/maquinas.component';
 import { TiendaComponent } from './pages/tienda/tienda.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegistroComponent } from './pages/registro/registro.component';    
 
 
 export const routes: Routes = [
@@ -29,20 +31,19 @@ export const routes: Routes = [
             }
         ],
     },
-    // {
-    //     path: 'auth',
-    //     component: LayoutAuthComponent,
-    //     children: [
-    //         {
-    //             path: 'login',
-    //             component: LoginComponent,
-    //         },
-    //         {
-    //             path: 'register',
-    //             component: RegisterComponent,
-    //         },
-    //     ],
-    // },
+    {
+        path: 'auth',
+        children: [
+            {
+                path: 'login',
+                component: LoginComponent,
+            },
+            {
+                path: 'registro',
+                component: RegistroComponent,
+            },
+        ],
+    },
     // {
     //     path: 'admin',
     //     component: LayoutAdminComponent,
