@@ -21,11 +21,21 @@ module.exports = {
       },
       animation: {
         'fade-in': 'fadeIn 1s ease-out both',
+        'slide-in-left': 'slide-in-left 1s ease-out both',
+        'slide-in-right': 'slide-in-right 1s ease-out both',
       },
       keyframes: {
-        fadeIn: {
+        'fadeIn': {
           '0%': { opacity: 0, transform: 'translateY(-10px)' },
           '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
+        'slide-in-left': {
+          '0%': { transform: 'translateX(-100%)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
+        'slide-in-right': {
+          '0%': { transform: 'translateX(100%)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
         },
       },
     },
