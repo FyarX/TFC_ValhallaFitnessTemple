@@ -1,10 +1,18 @@
-  <div class="relative min-h-screen overflow-hidden" id="login_container">
+  <div class="relative min-h-screen overflow-hidden font-montserrat" id="login_container">
     <div class="absolute inset-0 bg-[url('/img/backgrounds/bg_login.jpg')] bg-cover bg-center scale-105 Z-0">
       <div class="absolute inset-0 z-0 bg-black/30 backdrop-blur-sm">
-      <div class="relative z-10 flex items-center justify-end min-h-screen pr-52 tablet:px-10 movil:px-6 tablet:justify-center movil:justify-center animate-slide-in-right" id="login_form_container">
-        <div class="flex flex-col items-center justify-center w-full max-w-md gap-4 p-6 py-12 bg-white rounded-lg shadow-lg opacity-85 movil:gap-2 movil:py-8 movil:rounded-md movil:w-full movil:shadow-none">
-          <h1 class="mb-4 text-4xl font-bold text-center text-gray-800">Iniciar Sesión</h1>
-          <form class="flex flex-col w-full gap-4 mt-4 movil:mt-0">
+        <div id="text_container_login" class="flex flex-col left-20 exactly1400:hidden">
+          <h1 class="absolute z-20 text-4xl font-extrabold tracking-tight text-left text-transparent -translate-y-1/2 top-[44%] left-52 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-700 bg-clip-text drop-shadow-sm bg-black/50 animate-slide-in-left">
+            Bienvenido de nuevo al
+          </h1>
+          <h1 class="absolute z-20 text-5xl font-extrabold tracking-tight text-left text-transparent -translate-y-1/2 top-[51%] left-72 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-700 bg-clip-text drop-shadow-[0_2px_2px_rgba(0,0,0,0.6)] shadow-inner animate-slide-in-left">
+            VALHALLA
+          </h1>
+        </div>
+        <div id="login_form_container" class="relative z-10 flex items-center justify-end flex-1 min-h-screen pr-52 exactly1400:px-10 movil:px-6 animate-slide-in-right exactly1400:justify-center">
+          <div class="flex flex-col items-center justify-center w-full max-w-md gap-4 p-6 py-12 bg-white rounded-lg shadow-lg opacity-85 movil:gap-2 movil:py-8 movil:rounded-md movil:w-full movil:shadow-none">
+          <h1 class="text-3xl font-extrabold tracking-tight text-center text-transparent bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-700 bg-clip-text drop-shadow-sm">Iniciar Sesión</h1>
+          <form class="flex flex-col w-full gap-4 mt-4 movil:mt-4 movil:gap-2">
             <div class="mb-4">
               <label for="email" class="block mb-2 text-sm font-medium text-gray-700">Correo Electrónico</label>
               <div class="relative">
@@ -12,7 +20,7 @@
                   <lucide-icon name="user" class="absolute w-4 h-4 text-gray-400 -translate-y-1/2 left-3 top-1/2"></lucide-icon>
                 
                   <!-- Input con padding para no solapar el icono -->
-                  <input type="email" id="email" placeholder="Correo Electrónico" class="w-full py-2 pl-10 pr-3 ml-2 text-black placeholder-gray-400 bg-gray-100 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                  <input type="email" id="email" placeholder="nombre@ejemplo.com" class="w-11/12 py-2 pl-10 pr-3 ml-2 text-black placeholder-gray-400 bg-gray-100 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
                   />
               </div>
             </div>
@@ -23,7 +31,7 @@
                   <lucide-icon name="lock" class="absolute w-4 h-4 text-gray-400 -translate-y-1/2 left-3 top-1/2"></lucide-icon>
                 
                   <!-- Input con padding para no solapar el icono -->
-                  <input type="password" id="password" placeholder="Contraseña" class="w-full py-2 pl-10 pr-3 ml-2 text-black placeholder-gray-400 bg-gray-100 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                  <input type="password" id="password" placeholder="***********" class="w-11/12 py-2 pl-10 pr-3 ml-2 text-black placeholder-gray-400 bg-gray-100 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500">
               </div>
             </div>
             
