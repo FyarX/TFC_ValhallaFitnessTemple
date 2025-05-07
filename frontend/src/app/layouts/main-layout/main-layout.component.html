@@ -1,7 +1,9 @@
-<app-header></app-header>
+<body class="flex flex-col min-h-screen">
+  <app-header></app-header>
 
-<main>
-  <router-outlet></router-outlet>
-</main>
+  <main class="relative flex-1 overflow-hidden">
+    <router-outlet></router-outlet>
+  </main>
 
-<app-footer></app-footer>
+  <app-footer></app-footer>
+</body>

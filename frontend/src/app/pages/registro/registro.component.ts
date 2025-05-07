@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { NgIf } from '@angular/common';
+// import { NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup,  Validators, ReactiveFormsModule } from '@angular/forms';
 import { LucideAngularModule, LUCIDE_ICONS, LucideIconProvider, CircleUser, Lock, IdCard, Mail, Smartphone} from 'lucide-angular';
 
 @Component({
   selector: 'app-registro',
-  imports: [RouterModule, NgIf, LucideAngularModule, ReactiveFormsModule],
+  imports: [RouterModule, LucideAngularModule, ReactiveFormsModule],
   providers: [
     {
       provide: LUCIDE_ICONS,
@@ -45,12 +45,11 @@ export class RegistroComponent {
   onSubmit() {
     // Verifica si el formulario es válido
     if (this.registerForm.valid) {
-      // Aquí puedes manejar la lógica de registro, como enviar los datos a un servidor
-      console.log('Formulario enviado:', this.registerForm.value);
+      console.log('Formulario enviado:', this.registerForm.value); // Muestra los valores del formulario en la consola
     } else {
-      // Si el formulario no es válido, muestra un mensaje de error o realiza alguna acción
       console.log('Formulario inválido');
     }
   }
 
 }
+  
