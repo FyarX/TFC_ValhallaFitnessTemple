@@ -21,5 +21,12 @@ import { NgIf } from '@angular/common';
 export class MaquinasComponent {
   faMapPin = faMapPin; // Definición de la variable para el icono de FontAwesome
 
-  videoVisible = false; // Variable para controlar la visibilidad de los videos
+  videoAductorVisible = false; // Variable para controlar la visibilidad de los videos
+  videoShoulderVisible = false; // Variable para controlar la visibilidad de los videos
+  videoQuadsVisible = false; // Variable para controlar la visibilidad de los videos
+  videoLegPressVisible = false; // Variable para controlar la visibilidad de los videos
+  videoLatPulldownVisible = false; // Variable para controlar la visibilidad de los videos
+  videoPredicatorVisible = false; // Variable para controlar la visibilidad de los videos
+  videoLateralRaiseVisible = false; // Variable para controlar la visibilidad de los videos
+  videoBenchPressVisible = false; // Variable para controlar la visibilidad de los
 }

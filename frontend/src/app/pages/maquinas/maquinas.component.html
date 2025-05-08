@@ -12,27 +12,167 @@
   
       <!-- Contenido encima del plano -->
       <div class="relative z-10 p-6 text-white">
-        <!-- <h1 class="mb-4 text-3xl font-bold">Zona de máquinas</h1> -->
-        <!-- <div class="absolute z-10 left-[350px] top-[250px]">
-            <fa-icon [icon]="faMapPin" class="absolute text-5xl text-red-600 drop-shadow-[0_0_2px_white]"></fa-icon>
-        </div> -->
-
-        <button (click)="videoVisible = !videoVisible">
-            <fa-icon [icon]="faMapPin" class="absolute text-5xl text-red-600 drop-shadow-[0_0_2px_white]"></fa-icon>
-          </button>
         
-          <!-- Desplegable con el video -->
-          <div *ngIf="videoVisible" class="mt-2 p-2 bg-black/80 rounded-lg shadow-lg w-[300px] animate-fade-in">
-            <iframe
-              width="100%"
-              height="170"
-              class="rounded"
-              src="https://www.youtube.com/embed/fHxioAPFjHE?si=p7C_dPBUrK2ILlAO"
-              title="Video explicativo"
-              frameborder="0"
-              allowfullscreen
-            ></iframe>
-          </div>
+        <article id="aductor" class="absolute left-[340px] top-[215px]">
+          <button (click)="videoAductorVisible = !videoAductorVisible">
+              <fa-icon [icon]="faMapPin" class="absolute text-5xl text-yellow-400 drop-shadow-[0_0_2px_white]"></fa-icon>
+            </button>
+          
+            <!-- Desplegable con el video -->
+            <div *ngIf="videoAductorVisible" class="mt-12 p-2 bg-black/80 rounded-lg shadow-lg w-[300px] animate-fade-in">
+              <iframe
+                width="100%"
+                height="170"
+                class="rounded"
+                src="https://www.youtube.com/embed/fHxioAPFjHE?si=p7C_dPBUrK2ILlAO"
+                title="Video explicativo"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+        </article>
+
+
+        <article id="shoulder_press" class="absolute left-[640px] top-[65px]">
+          <button (click)="videoShoulderVisible = !videoShoulderVisible">
+              <fa-icon [icon]="faMapPin" class="absolute text-5xl text-yellow-400 drop-shadow-[0_0_2px_white]"></fa-icon>
+            </button>
+          
+            <!-- Desplegable con el video -->
+            <div *ngIf="videoShoulderVisible" class="mt-12 p-2 bg-black/80 rounded-lg shadow-lg w-[300px] animate-fade-in">
+              <iframe
+                width="100%"
+                height="170"
+                class="rounded"
+                src="https://www.youtube.com/embed/fHxioAPFjHE?si=p7C_dPBUrK2ILlAO"
+                title="Video explicativo"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+        </article>
+
+
+        <article id="quads" class="absolute left-[540px] top-[260px]">
+          <button (click)="videoQuadsVisible = !videoQuadsVisible">
+              <fa-icon [icon]="faMapPin" class="absolute text-5xl text-yellow-400 drop-shadow-[0_0_2px_white]"></fa-icon>
+            </button>
+          
+            <!-- Desplegable con el video -->
+            <div *ngIf="videoQuadsVisible" class="mt-12 p-2 bg-black/80 rounded-lg shadow-lg w-[300px] animate-fade-in">
+              <iframe
+                width="100%"
+                height="170"
+                class="rounded"
+                src="https://www.youtube.com/embed/fHxioAPFjHE?si=p7C_dPBUrK2ILlAO"
+                title="Video explicativo"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+        </article>
+
+
+
+        <article id="quads" class="absolute left-[990px] top-[200px]">
+          <button (click)="videoLegPressVisible = !videoLegPressVisible">
+              <fa-icon [icon]="faMapPin" class="absolute text-5xl text-yellow-400 drop-shadow-[0_0_2px_white]"></fa-icon>
+            </button>
+          
+            <!-- Desplegable con el video -->
+            <div *ngIf="videoLegPressVisible" class="mt-12 p-2 bg-black/80 rounded-lg shadow-lg w-[300px] animate-fade-in">
+              <iframe
+                width="100%"
+                height="170"
+                class="rounded"
+                src="https://www.youtube.com/embed/fHxioAPFjHE?si=p7C_dPBUrK2ILlAO"
+                title="Video explicativo"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+        </article>
+
+
+
+        <article id="lat_pulldown" class="absolute left-[660px] top-[335px]">
+          <button (click)="videoLatPulldownVisible = !videoLatPulldownVisible">
+              <fa-icon [icon]="faMapPin" class="absolute text-5xl text-yellow-400 drop-shadow-[0_0_2px_white]"></fa-icon>
+            </button>
+          
+            <!-- Desplegable con el video -->
+            <div *ngIf="videoLatPulldownVisible" class="mt-12 p-2 bg-black/80 rounded-lg shadow-lg w-[300px] animate-fade-in">
+              <iframe
+                width="100%"
+                height="170"
+                class="rounded"
+                src="https://www.youtube.com/embed/fHxioAPFjHE?si=p7C_dPBUrK2ILlAO"
+                title="Video explicativo"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+        </article>
+
+
+        <article id="predicator" class="absolute left-[1155px] top-[590px]">
+          <button (click)="videoPredicatorVisible = !videoPredicatorVisible">
+              <fa-icon [icon]="faMapPin" class="absolute text-5xl text-yellow-400 drop-shadow-[0_0_2px_white]"></fa-icon>
+            </button>
+          
+            <!-- Desplegable con el video -->
+            <div *ngIf="videoPredicatorVisible" class="mt-12 p-2 bg-black/80 rounded-lg shadow-lg w-[300px] animate-fade-in">
+              <iframe
+                width="100%"
+                height="170"
+                class="rounded"
+                src="https://www.youtube.com/embed/fHxioAPFjHE?si=p7C_dPBUrK2ILlAO"
+                title="Video explicativo"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+        </article>
+
+
+        <article id="lateral_raise" class="absolute left-[1515px] top-[700px]">
+          <button (click)="videoLateralRaiseVisible = !videoLateralRaiseVisible">
+              <fa-icon [icon]="faMapPin" class="absolute text-5xl text-yellow-400 drop-shadow-[0_0_2px_white]"></fa-icon>
+            </button>
+          
+            <!-- Desplegable con el video -->
+            <div *ngIf="videoLateralRaiseVisible" class="mt-12 p-2 bg-black/80 rounded-lg shadow-lg w-[300px] animate-fade-in">
+              <iframe
+                width="100%"
+                height="170"
+                class="rounded"
+                src="https://www.youtube.com/embed/fHxioAPFjHE?si=p7C_dPBUrK2ILlAO"
+                title="Video explicativo"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+        </article>
+
+
+        <article id="lateral_raise" class="absolute left-[1097px] top-[380px]">
+          <button (click)="videoBenchPressVisible = !videoBenchPressVisible">
+              <fa-icon [icon]="faMapPin" class="absolute text-5xl text-yellow-400 drop-shadow-[0_0_2px_white]"></fa-icon>
+            </button>
+          
+            <!-- Desplegable con el video -->
+            <div *ngIf="videoBenchPressVisible" class="mt-12 p-2 bg-black/80 rounded-lg shadow-lg w-[300px] animate-fade-in">
+              <iframe
+                width="100%"
+                height="170"
+                class="rounded"
+                src="https://www.youtube.com/embed/fHxioAPFjHE?si=p7C_dPBUrK2ILlAO"
+                title="Video explicativo"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+        </article>
       </div>
   
     </div>
