@@ -1,13 +1,6 @@
-package com.valhalla.valhallawebsite.models;
+package com.valhalla.valhallawebsite.dto;
 
-import jakarta.persistence.*;
-
-@Entity
-public class Usuario {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;    
-
+public class RegisterRequest {
     private String nombre;
     private String apellidos;
     private String email;
@@ -15,11 +8,14 @@ public class Usuario {
     private String rol;
     private String imagen;
     private String cep;
-    //! Getters y Setters
+    private Long id;   
+
+    public RegisterRequest() {}
+
+    //! Getters y setters
     public String getNombre() {
         return nombre;
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -27,7 +23,6 @@ public class Usuario {
     public String getApellidos() {
         return apellidos;
     }
-
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
@@ -35,7 +30,6 @@ public class Usuario {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -43,7 +37,6 @@ public class Usuario {
     public String getDni() {
         return dni;
     }
-
     public void setDni(String dni) {
         this.dni = dni;
     }
@@ -51,7 +44,6 @@ public class Usuario {
     public String getRol() {
         return rol;
     }
-
     public void setRol(String rol) {
         this.rol = rol;
     }
@@ -59,7 +51,6 @@ public class Usuario {
     public String getImagen() {
         return imagen;
     }
-
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
@@ -67,7 +58,6 @@ public class Usuario {
     public String getCep() {
         return cep;
     }
-
     public void setCep(String cep) {
         this.cep = cep;
     }
@@ -75,7 +65,6 @@ public class Usuario {
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
