@@ -1,1 +1,35 @@
-<p>contacto works!</p>
+<div id="main_container" class="min-h-screen bg-gradient-to-b from-stone-950 via-gray-900 to-stone-900">
+  <section id="content_container" class="flex flex-col gap-y-12 lg:flex-row lg:gap-x-12 px-4 pt-12 mx-auto max-w-[1440px]">
+    <!-- Mapa y contacto -->
+    <article class="flex flex-col flex-1 min-w-0 gap-4">
+      <div id="map" class="w-full h-[400px] rounded-xl shadow-md"></div>
+
+      <div id="info_container" class="flex flex-col justify-center gap-4 p-4 bg-gray-800 rounded-lg shadow-lg font-montserrat">
+        <h2 class="text-2xl text-center text-white font-anton">
+          Información de Contacto
+        </h2>
+        <p class="text-white text-md">
+          Dirección: Calle de la Educación, 123, Ciudad, País
+        </p>
+        <p class="text-white text-md">Teléfono: +34 123 456 789</p>
+        <p class="text-white text-md">Email: {{ email }}</p>
+      </div>
+    </article>
+
+    <!-- Formulario -->
+    <div id="form_container" class="flex flex-col flex-1 min-w-0 gap-4 p-4 mb-8 bg-gray-800 rounded-lg shadow-lg lg:px-12 font-montserrat lg:mb-0">
+      <h2 class="text-3xl text-center text-white font-anton">
+        Envía tu sugerencia
+      </h2>
+      <form id="contact_form" class="flex flex-col gap-4">
+        <input type="text" placeholder="Nombre" class="p-2 border border-gray-300 rounded-md" required/>
+        <input type="email" placeholder="Email" class="p-2 border border-gray-300 rounded-md" required/>
+        <input type="text" placeholder="Asunto" class="p-2 border border-gray-300 rounded-md" required/>
+        <textarea placeholder="Mensaje" class="p-2 border border-gray-300 rounded-md pb-28"required></textarea>
+        <button type="submit" class="p-2 text-white bg-blue-500 rounded-md">
+          Enviar
+        </button>
+      </form>
+    </div>
+  </section>
+</div>

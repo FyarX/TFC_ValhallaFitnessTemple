@@ -18,7 +18,9 @@ module.exports = {
         'movil': {'max':'600px'},
         'movil_pequeno': {'max':'450px'},
         'tablet': {'min':'450px','max': '850px'},
-        'exactly1400': {'max': '1400px'}
+        'exactly1400': {'max': '1400px'},
+        'exactly1250': {'max': '1250px'},
+        'exactly1350': {'max': '1350px'},
       },
       animation: {
         'fade-in': 'fadeIn 1s ease-out both',

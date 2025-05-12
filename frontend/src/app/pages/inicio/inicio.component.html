@@ -1,1 +1,55 @@
-<p>inicio works!</p>
+<div class="bg-gradient-to-b from-stone-950 via-gray-900 to-stone-900">
+
+    <!-- Sección de bienvenida (La primera que ve el usuario) -->
+    <section class="flex flex-row items-center justify-center w-full h-screen mx-auto max-w-8xl movil:h-96">
+        <img src="/img/anuncio_cuadrado.png" alt="Anuncio Valhalla" class="w-full h-full mb-4 shadow-lg exactly1250:hidden"/>
+        <div class="flex flex-col items-center justify-center w-full h-full text-center">
+            <h1 class="w-4/5 mb-4 text-5xl font-bold text-white movil:text-4xl">Bienvenido a <span class="text-gold">Valhalla Fitness Temple</span></h1>
+            <p class="mb-8 text-lg text-gray-300">Donde los guerreros se hacen leyendas.</p>
+            <a routerLink="/auth/registro" class="px-6 py-3 text-lg font-semibold text-black rounded-lg bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-700 hover:bg-gold/80">Empieza</a>
+        </div>
+    </section>
+    
+    <!--  Sección de tarifas -->
+   <section class="w-full px-4 py-16 mx-auto max-w-7xl ">
+    <h2 class="mb-8 text-3xl font-bold text-center text-white">Tarifas</h2>
+
+    <div class="relative">
+        <!-- Botón Izquierdo -->
+        <button (click)="scrollCarousel(-1)"
+                class="absolute left-0 z-20 p-3 -translate-y-1/2 rounded-full shadow-md top-1/2 bg-white/80 hover:bg-white">
+        <svg class="text-gray-700 w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+        </svg>
+        </button>
+
+        <!-- Carrusel -->
+        <div #carousel class="flex items-center space-x-6 overflow-x-auto font-montserrat no-scrollbar scroll-smooth snap-x snap-mandatory">
+        <div *ngFor="let tarifa of tarifas; let i = index"
+            [ngClass]="{'scale-105 z-10': i === currentIndex, 'scale-95 opacity-70 z-0': i !== currentIndex}"
+            class="flex flex-col items-center justify-center min-w-[300px] transition-all duration-300 ease-in-out snap-center shrink-0 bg-white rounded-3xl h-72 shadow-xl p-8 text-center">
+            <h3 class="text-2xl font-bold">{{ tarifa.nombre }}</h3>
+            <p class="w-64 mt-2 text-gray-600">{{ tarifa.descripcion }}</p>
+            <p class="w-full py-1 mt-4 text-3xl font-medium rounded-lg font-anton bg-gold">{{ tarifa.precio }}</p>
+        </div>
+        </div>
+
+        <!-- Botón Derecho -->
+        <button (click)="scrollCarousel(1)"
+                class="absolute right-0 z-20 p-3 -translate-y-1/2 rounded-full shadow-md top-1/2 bg-white/80 hover:bg-white">
+        <svg class="text-gray-700 w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+        </svg>
+        </button>
+    </div>
+    </section>
+</div>
+    <style>
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    </style>
