@@ -3,6 +3,9 @@ import com.valhalla.valhallawebsite.dto.RegisterRequest;
 import com.valhalla.valhallawebsite.models.Usuario;
 import com.valhalla.valhallawebsite.repositories.UserRepository;
 import io.swagger.v3.oas.annotations.Operation;
+
+import java.util.Map;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +25,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
         if (userRepository.existsByEmail(request.getEmail())) {
-            return ResponseEntity.badRequest().body("Error: ¡El email ya está en uso!");
+            return ResponseEntity.badRequest().body(Map.of("error", "Error: ¡El email ya está en uso!"));
         }
 
         Usuario user = new Usuario();
@@ -36,6 +39,6 @@ public class AuthController {
 
         userRepository.save(user);
 
-        return ResponseEntity.ok("Usuario registrado con éxito");
+        return ResponseEntity.ok(Map.of("message", "Usuario registrado con éxito"));
     }
 }

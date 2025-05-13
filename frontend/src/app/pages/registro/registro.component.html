@@ -14,24 +14,21 @@
           <div id="form_container_grid" class="grid grid-cols-2 gap-4">
             <!-- NOMBRE -->
             <div class="mb-4">
-                <label for="name" class="block mb-2 text-sm font-medium text-gray-700">Nombre</label>
+              <label for="nombre" class="block mb-2 text-sm font-medium text-gray-700">Nombre</label>
                 <div class="relative">
-                    <!-- Icono Nombre -->
-                    <lucide-icon name="circle-user" class="absolute w-4 h-4 text-gray-400 -translate-y-1/2 left-3 top-1/2"></lucide-icon>
-                  
-                    <!-- Input Nombre -->
-                    <input type="text" id="name" formControlName="nombre" class="w-full py-2 pl-10 pr-3 ml-2 text-black bg-gray-100 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"/>
+                  <!-- Icono Nombre -->
+                  <lucide-icon name="circle-user" class="absolute w-4 h-4 text-gray-400 -translate-y-1/2 pointer-events-none left-3 top-1/2"></lucide-icon>
 
-                    <div *ngIf="registroForm.get('email')?.invalid && registroForm.get('email')?.touched" class="text-red-500">
-                      El email no es válido
-                    </div>
-                </div>
-                <!-- Validación de formulario (NO IMPLEMENTADO) -->
-                <!-- <p *ngIf="registerForm && f['name'].touched && f['name'].invalid" class="text-xs text-red-500">
-                  {{ f["name"].errors?.['required'] ? 'El nombre es obligatorio' : ["''"] }}
-                  {{ f['name'].errors?.['minlength'] ? 'Mínimo 2 caracteres' : ["''"] }}
-                </p> -->
+                  <!-- Input Nombre -->
+                  <input type="text" id="nombre" formControlName="nombre" class="w-full py-2 pl-10 pr-3 ml-2 text-black bg-gray-100 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"/>
               </div>
+
+            <!-- Errores personalizados -->
+            <div *ngIf="registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched" class="mt-1 text-sm text-red-500">
+              <span *ngIf="registroForm.get('nombre')?.errors?.['required']">El nombre es obligatorio.</span>
+              <span *ngIf="registroForm.get('nombre')?.errors?.['pattern']">Solo letras y espacios. Mínimo 3 caracteres.</span>
+            </div>
+          </div>
 
             <!-- APELLIDOS -->
             <div class="mb-4">
@@ -44,6 +41,12 @@
                     <input type="text" id="surname" formControlName="apellidos" class="w-full py-2 pl-10 pr-3 ml-2 text-black bg-gray-100 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
                     />
                 </div>
+
+                <!-- Errores personalizados -->
+                <div *ngIf="registroForm.get('apellidos')?.invalid && registroForm.get('apellidos')?.touched" class="mt-1 text-sm text-red-500">
+                  <span *ngIf="registroForm.get('apellidos')?.errors?.['required']">Los apellidos son obligatorios.</span>
+                  <span *ngIf="registroForm.get('apellidos')?.errors?.['pattern']">Solo letras y espacios. Mínimo 3 caracteres.</span>
+                </div>
             </div>
 
             <!-- EMAIL -->
@@ -54,9 +57,16 @@
                   <lucide-icon name="mail" class="absolute w-4 h-4 text-gray-400 -translate-y-1/2 left-3 top-1/2"></lucide-icon>
                 
                   <!-- Input Email -->
-                  <input type="email" id="email" formControlName="email" class="w-full py-2 pl-10 pr-3 ml-2 text-black bg-gray-100 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                  />
+                  <input type="email" id="email" formControlName="email" class="w-full py-2 pl-10 pr-3 ml-2 text-black bg-gray-100 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"/>
               </div>
+
+              <!-- Errores personalizados -->
+              <div *ngIf="registroForm.get('email')?.invalid && registroForm.get('email')?.touched" class="mt-1 text-sm text-red-500">
+                <span *ngIf="registroForm.get('email')?.errors?.['required']">El correo electrónico es obligatorio.</span>
+                <span *ngIf="registroForm.get('email')?.errors?.['email']">Formato de correo electrónico inválido.</span>
+                <span *ngIf="registroForm.get('email')?.errors?.['pattern']">El correo electrónico ya está registrado.</span>
+              </div>
+              
             </div>
             <!-- CONTRASEÑA -->
             <div class="mb-4">
