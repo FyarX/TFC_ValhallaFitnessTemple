@@ -4,10 +4,10 @@ public class RegisterRequest {
     private String nombre;
     private String apellidos;
     private String email;
+    private String password;
+    private String telefono;
     private String dni;
     private String rol;
-    private String imagen;
-    private String cep;
     private Long id;   
 
     public RegisterRequest() {}
@@ -48,18 +48,18 @@ public class RegisterRequest {
         this.rol = rol;
     }
 
-    public String getImagen() {
-        return imagen;
+    public String getPassword() {
+        return password;
     }
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getCep() {
-        return cep;
+    public String getTelefono() {
+        return telefono;
     }
-    public void setCep(String cep) {
-        this.cep = cep;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public Long getId() {

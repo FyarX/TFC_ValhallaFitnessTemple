@@ -10,7 +10,7 @@
           <!-- Texto de arriba del formulario -->
           <h1 class="text-2xl font-extrabold tracking-tight text-center text-transparent bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-700 bg-clip-text drop-shadow-sm">Únete al templo. Crea tu cuenta.</h1>
           <!-- Formulario -->
-          <form class="flex flex-col w-full gap-4 mt-4 movil:mt-0" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <form class="flex flex-col w-full gap-4 mt-4 movil:mt-0" [formGroup]="registroForm" (ngSubmit)="onSubmit()">
           <div id="form_container_grid" class="grid grid-cols-2 gap-4">
             <!-- NOMBRE -->
             <div class="mb-4">
@@ -20,8 +20,11 @@
                     <lucide-icon name="circle-user" class="absolute w-4 h-4 text-gray-400 -translate-y-1/2 left-3 top-1/2"></lucide-icon>
                   
                     <!-- Input Nombre -->
-                    <input type="text" id="name" formControlName="nombre" class="w-full py-2 pl-10 pr-3 ml-2 text-black bg-gray-100 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                    />
+                    <input type="text" id="name" formControlName="nombre" class="w-full py-2 pl-10 pr-3 ml-2 text-black bg-gray-100 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"/>
+
+                    <div *ngIf="registroForm.get('email')?.invalid && registroForm.get('email')?.touched" class="text-red-500">
+                      El email no es válido
+                    </div>
                 </div>
                 <!-- Validación de formulario (NO IMPLEMENTADO) -->
                 <!-- <p *ngIf="registerForm && f['name'].touched && f['name'].invalid" class="text-xs text-red-500">
@@ -35,7 +38,7 @@
                 <label for="surname" class="block mb-2 text-sm font-medium text-gray-700">Apellidos</label>
                 <div class="relative">
                     <!-- Icono Apellidos -->
-                    <lucide-icon name="id_card" class="absolute w-4 h-4 text-gray-400 -translate-y-1/2 left-3 top-1/2"></lucide-icon>
+                    <lucide-icon name="users" class="absolute w-4 h-4 text-gray-400 -translate-y-1/2 left-3 top-1/2"></lucide-icon>
                   
                     <!-- Input Apellidos -->
                     <input type="text" id="surname" formControlName="apellidos" class="w-full py-2 pl-10 pr-3 ml-2 text-black bg-gray-100 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
@@ -79,7 +82,21 @@
                   />
               </div>
             </div>
+
+            <!-- DNI -->
+            <div class="mb-4">
+              <label for="dni" class="block mb-2 text-sm font-medium text-gray-700">DNI</label>
+              <div class="relative">
+                  <!-- Icono DNI -->
+                  <lucide-icon name="id_card" class="absolute w-4 h-4 text-gray-400 -translate-y-1/2 left-3 top-1/2"></lucide-icon>
+                
+                  <!-- Input DNI -->
+                  <input type="text" id="dni" formControlName="dni" class="w-full py-2 pl-10 pr-3 ml-2 text-black bg-gray-100 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                  />
+              </div>
+            </div>
           </div>
+
             
             <!-- BOTÓN DE CREAR CUENTA -->
             <button type="submit" class="w-full px-4 py-2 font-bold text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 focus:outline-none focus:ring focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed"> 

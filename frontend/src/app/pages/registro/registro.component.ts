@@ -1,55 +1,41 @@
 import { Component } from '@angular/core';
-// import { NgIf } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormBuilder, FormGroup,  Validators, ReactiveFormsModule } from '@angular/forms';
-import { LucideAngularModule, LUCIDE_ICONS, LucideIconProvider, CircleUser, Lock, IdCard, Mail, Smartphone} from 'lucide-angular';
+import { FormBuilder, FormGroup,  Validators, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { LucideAngularModule, LUCIDE_ICONS, LucideIconProvider, CircleUser, Lock, IdCard, Mail, Smartphone, Users} from 'lucide-angular';
+import { AuthService } from '../../core/services/auth/auth.service'
 
 @Component({
   selector: 'app-registro',
-  imports: [RouterModule, LucideAngularModule, ReactiveFormsModule],
+  imports: [RouterModule, LucideAngularModule, ReactiveFormsModule, NgIf],
   providers: [
     {
       provide: LUCIDE_ICONS,
       multi: true,
-      useValue: new LucideIconProvider({ CircleUser, Lock, IdCard, Mail, Smartphone })
+      useValue: new LucideIconProvider({ CircleUser, Lock, IdCard, Mail, Smartphone, Users })
     }
   ],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.css'
 })
 export class RegistroComponent {
-  // Propiedad para almacenar el formulario reactivo
-  registerForm!: FormGroup;
-  // Constructor con inyección de FormBuilder
-  constructor(private fb: FormBuilder) { }
+  registroForm = new FormGroup({
+    nombre: new FormControl('', [Validators.required]),
+    apellidos: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    telefono: new FormControl('', [Validators.required]),
+    dni: new FormControl('', [Validators.required]),
+    rol: new FormControl('usuario')
+  });
 
-  // Método para inicializar el formulario reactivo
-  ngOnInit() {
-    // Creación del formulario reactivo con validaciones
-    // Se utiliza FormBuilder para crear un grupo de controles de formulario
-    this.registerForm = this.fb.group({
-      nombre: ['', [Validators.required, Validators.minLength(3)]],
-      apellidos: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      telefono: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+  constructor(private auth: AuthService) {}
+
+  onSubmit() {
+    this.auth.register(this.registroForm.value).subscribe({
+      next: res => alert('Registrado con éxito'),
+      error: err => alert('Error al registrar: ' + err.error)
     });
   }
-
-  // Método para verificar si un campo es válido
-  get f() {
-    return this.registerForm?.controls;
-  }
-
-  // Método para manejar el envío del formulario
-  onSubmit() {
-    // Verifica si el formulario es válido
-    if (this.registerForm.valid) {
-      console.log('Formulario enviado:', this.registerForm.value); // Muestra los valores del formulario en la consola
-    } else {
-      console.log('Formulario inválido');
-    }
-  }
-
 }
   

@@ -2,15 +2,14 @@ package com.valhalla.valhallawebsite.controllers;
 import com.valhalla.valhallawebsite.dto.RegisterRequest;
 import com.valhalla.valhallawebsite.models.Usuario;
 import com.valhalla.valhallawebsite.repositories.UserRepository;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/auth")
-@Tag(name = "Auth", description = "Controlador de autenticación")
 public class AuthController {
     private final UserRepository userRepository;
 
@@ -30,10 +29,10 @@ public class AuthController {
         user.setNombre(request.getNombre());
         user.setApellidos(request.getApellidos());
         user.setEmail(request.getEmail());
+        user.setPassword(request.getPassword());
+        user.setTelefono(request.getTelefono());
         user.setDni(request.getDni());
         user.setRol(request.getRol());
-        user.setImagen(request.getImagen());
-        user.setCep(request.getCep());
 
         userRepository.save(user);
 
