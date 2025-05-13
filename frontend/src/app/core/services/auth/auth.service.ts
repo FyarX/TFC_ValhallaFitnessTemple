@@ -1,26 +1,21 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  readonly _isLoggedIn = signal<boolean>(false); // Signal que va indicando si el usuario está loggeado o no
-
-  readonly isLoggedIn = this._isLoggedIn.asReadonly(); // Lectura del signal para que no se pueda modificar desde fuera de la clase
+  private apiUrl = 'http://localhost:8080/api/auth';
   
-  login(credentials: {email: string, password: string}): void {
-   // !FALTA POR IMPLEMENTAR TOKEN DE AUTENTICACIÓN    
+  constructor(private http: HttpClient) {}
+
+  register(userData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register`, userData);
   }
 
-  // Cierra la sesión del usuario
-  logout(): void {
-    this._isLoggedIn.set(false); // Cambia el estado de loggeo a false
-    localStorage.removeItem('token'); // Elimina el token de localStorage
-  }
-
-  constructor() {
-    if(localStorage.getItem('token')) {
-      this._isLoggedIn.set(true); // Cambia el estado de loggeo a true si existe el token en local
-    }
+  isLoggedIn() {
+    const token = localStorage.getItem('token');
+    return token !== null;
   }
 }

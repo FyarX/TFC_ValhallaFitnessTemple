@@ -1,4 +1,5 @@
 import { Component, AfterViewInit, Renderer2 } from '@angular/core';
+import { environment } from '../../../environments/environment.prod';
 
 declare var google: any;
 interface Window {
@@ -23,7 +24,7 @@ export class ContactoComponent implements AfterViewInit {
     // Evita múltiples cargas si ya existe
     if (!(window as any).google) {
       const script = this.renderer.createElement('script');
-      script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyC-yra4WqizfDqFgb_9LTpdHnLINwVTCwc&callback=initMap';
+      script.src = 'https://maps.googleapis.com/maps/api/js?key={environment.googleMapsApiKey}&callback=initMap';
       script.async = true;
       script.defer = true;
       this.renderer.appendChild(document.body, script);

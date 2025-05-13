@@ -28,9 +28,6 @@
             ],
             "styles": [
               "src/styles.css"
-            ],
-            "scripts": [
-              "https://maps.googleapis.com/maps/api/js?AIzaSyC-yra4WqizfDqFgb_9LTpdHnLINwVTCwc&callback=initMap"
             ]
           },
           "configurations": {
