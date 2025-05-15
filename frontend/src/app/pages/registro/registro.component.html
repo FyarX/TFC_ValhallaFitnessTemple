@@ -25,7 +25,7 @@
 
             <!-- Errores personalizados -->
             <div *ngIf="registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched" class="mt-1 text-sm text-red-500">
-              <span *ngIf="registroForm.get('nombre')?.errors?.['required']">El nombre es obligatorio.</span>
+              <span *ngIf="registroForm.get('nombre')?.errors?.['required']">Nombre obligatorio.</span>
               <span *ngIf="registroForm.get('nombre')?.errors?.['pattern']">Solo letras y espacios. Mínimo 3 caracteres.</span>
             </div>
           </div>
@@ -44,7 +44,7 @@
 
                 <!-- Errores personalizados -->
                 <div *ngIf="registroForm.get('apellidos')?.invalid && registroForm.get('apellidos')?.touched" class="mt-1 text-sm text-red-500">
-                  <span *ngIf="registroForm.get('apellidos')?.errors?.['required']">Los apellidos son obligatorios.</span>
+                  <span *ngIf="registroForm.get('apellidos')?.errors?.['required']">Apellidos obligatorios.</span>
                   <span *ngIf="registroForm.get('apellidos')?.errors?.['pattern']">Solo letras y espacios. Mínimo 3 caracteres.</span>
                 </div>
             </div>

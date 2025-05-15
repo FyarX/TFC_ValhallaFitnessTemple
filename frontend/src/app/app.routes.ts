@@ -14,6 +14,11 @@ export const routes: Routes = [
         component: MainLayoutComponent,
          children: [
             {
+                path: '',
+                redirectTo: 'inicio',
+                pathMatch: 'full',
+            },
+            {
                 path: 'inicio',
                 component: InicioComponent,
             },

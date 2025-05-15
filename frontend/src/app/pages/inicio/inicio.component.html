@@ -43,6 +43,89 @@
         </button>
     </div>
     </section>
+
+    <!-- Opiniones de los clientes -->
+    <section class="w-full px-4 py-16 mx-auto max-w-[1700px]">
+        <h2 class="mb-8 text-3xl font-bold text-center text-white">Opiniones de nuestros clientes</h2>
+
+        <div class="flex flex-col items-center justify-center w-full h-full">
+            <div class="flex flex-wrap justify-center w-full gap-6 xl:grid xl:grid-cols-3">
+
+            <div *ngFor="let opinion of opiniones" class="flex flex-col items-center justify-center w-full h-full px-4 mb-4">
+                <p class="w-full p-4 text-lg italic text-center text-gray-800 bg-white rounded-lg shadow-lg">
+                {{ opinion.opinion }}
+                </p>
+                <p class="mt-2 font-semibold text-white">{{ opinion.nombre }}</p>
+
+                <!-- Estrellas -->
+                <div class="flex mt-2">
+                <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+                    <lucide-icon
+                    name="star"
+                    [ngClass]="star <= opinion.estrellas ? 'text-yellow-400' : 'text-gray-400'"
+                    class="w-5 h-5">
+                    </lucide-icon>
+                </ng-container>
+                </div>
+            </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Horario del gimnasio -->
+     <section class="w-full px-4 py-16 mx-auto max-w-[1440px] font-montserrat">
+  <h2 class="mb-8 text-3xl font-bold text-center text-white">Horario de clases</h2>
+
+  <div class="overflow-x-auto bg-white rounded-lg shadow-lg">
+    <table class="min-w-full text-sm text-left text-gray-700">
+      <thead class="text-xs tracking-wider text-white uppercase bg-yellow-500">
+        <tr>
+          <th class="px-6 py-4">Hora</th>
+          <th class="px-6 py-4">Lunes</th>
+          <th class="px-6 py-4">Martes</th>
+          <th class="px-6 py-4">Miércoles</th>
+          <th class="px-6 py-4">Jueves</th>
+          <th class="px-6 py-4">Viernes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b">
+          <td class="px-6 py-4 font-semibold">08:00 - 09:00</td>
+          <td class="px-6 py-4">Yoga</td>
+          <td class="px-6 py-4">Cardio</td>
+          <td class="px-6 py-4">Yoga</td>
+          <td class="px-6 py-4">Cardio</td>
+          <td class="px-6 py-4">Pilates</td>
+        </tr>
+        <tr class="border-b bg-gray-50">
+          <td class="px-6 py-4 font-semibold">10:00 - 11:00</td>
+          <td class="px-6 py-4">Funcional</td>
+          <td class="px-6 py-4">Spinning</td>
+          <td class="px-6 py-4">Funcional</td>
+          <td class="px-6 py-4">Spinning</td>
+          <td class="px-6 py-4">Boxeo</td>
+        </tr>
+        <tr class="border-b">
+          <td class="px-6 py-4 font-semibold">18:00 - 19:00</td>
+          <td class="px-6 py-4">Boxeo</td>
+          <td class="px-6 py-4">HIIT</td>
+          <td class="px-6 py-4">CrossFit</td>
+          <td class="px-6 py-4">HIIT</td>
+          <td class="px-6 py-4">CrossFit</td>
+        </tr>
+        <tr class="border-b bg-gray-50">
+          <td class="px-6 py-4 font-semibold">20:00 - 21:00</td>
+          <td class="px-6 py-4">Zumba</td>
+          <td class="px-6 py-4">Zumba</td>
+          <td class="px-6 py-4">Gap</td>
+          <td class="px-6 py-4">Zumba</td>
+          <td class="px-6 py-4">Stretching</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 </div>
     <style>
     .no-scrollbar::-webkit-scrollbar {

@@ -3,10 +3,18 @@ import { ElementRef, ViewChild } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { LucideAngularModule, LUCIDE_ICONS, LucideIconProvider, Star, StarHalf } from 'lucide-angular';
 
 @Component({
   selector: 'app-inicio',
-  imports: [CommonModule, NgFor, RouterModule],
+  imports: [CommonModule, NgFor, RouterModule, LucideAngularModule],
+  providers: [
+    {
+      provide: LUCIDE_ICONS,
+      multi: true,
+      useValue: new LucideIconProvider({ Star, StarHalf }),
+    }
+  ],
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css'
 })
@@ -32,4 +40,13 @@ export class InicioComponent {
       behavior: 'smooth'
     });
   }
+
+  //! Opiniones de clientes
+  opiniones = [
+    { nombre: 'Juan Pérez', opinion: '"El gimnasio tiene todo lo que necesito y el personal es muy amable."', estrellas : 5 },
+    { nombre: 'María López', opinion: '"Las instalaciones son modernas y limpias. ¡Me encanta entrenar aquí!"', estrellas : 4 },
+    { nombre: 'Carlos García', opinion: '"Las clases grupales son muy divertidas y motivadoras."', estrellas : 4 },
+    { nombre: 'Ana Martínez', opinion: '"He visto grandes resultados desde que empecé a entrenar aquí. ¡Recomendado!"', estrellas : 5 },
+    { nombre: 'Luis Fernández', opinion: '"El ambiente es genial y la comunidad es muy acogedora."', estrellas : 4 },
+  ];
 }
