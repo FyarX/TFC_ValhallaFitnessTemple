@@ -20,6 +20,23 @@ import { RouterModule } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  
+  //? Constructor
+  // constructor(private authService: AuthService) {} // Inyección del servicio de autenticación
+
+  //? Ciclo de vida
+  // ngOnInit(): void {} // Método que se ejecuta al inicializar el componente
+  ngOnInit() {
+    this.isLoggedIn = this.authService.isLoggedIn(); // Inicializa el estado de si el usuario está loggeado o no
+    this.userRole = this.authService.getUserRole(); // Inicializa el rol del usuario
+  }
+
+  //? Servicios
+  // Router
+  private router = inject(RouterModule); // Inyección del router para la navegación
+
+  // AuthService
+  private authService = inject(AuthService); // Inyección del servicio de autenticación
 
   //? Eventos del menú desplegable
   openMenu = false;  // Estado del menú desplegable
@@ -43,22 +60,15 @@ export class HeaderComponent {
     this.openUserMenu = false; // Cierra el menú de usuario al hacer clic en el icono de nuevo
   }
 
-  //? Servicios
-  // Router
-  private router = inject(RouterModule); // Inyección del router para la navegación
+  
 
-  // AuthService
-  private authService = inject(AuthService); // Inyección del servicio de autenticación
-  isLoggedIn = this.authService.isLoggedIn; // Estado de si el usuario está loggeado o no
+  //? Métodos de sesión
+  isLoggedIn: boolean = false; // Estado de si el usuario está loggeado o no
+  userRole: string | null = null; // Rol del usuario
 
-  //? Métodos
-  // Cierra la sesión del usuario
-  // logout(): void {
-  //   this.authService.logout(); // Llama al método de cierre de sesión del servicio de autenticación
-  //   this.openUserMenu = false; // Cierra el menú de usuario al cerrar sesión
-
-  //   this.router.navigate(['/inicio']); // Redirige al usuario a la página de inicio de sesión
-  // }
-
+  logout(){
+    localStorage.clear(); // Limpia el almacenamiento local
+    location.reload(); // Recarga la página
+  }
 
 }

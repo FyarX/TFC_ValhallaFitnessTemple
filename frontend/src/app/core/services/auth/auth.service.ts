@@ -14,8 +14,17 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/register`, userData);
   }
 
-  isLoggedIn() {
-    const token = localStorage.getItem('token');
-    return token !== null;
+  getUserRole(): string | null {
+    const rol = localStorage.getItem('rol');
+    return rol;
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
+
+  isLoggedIn(): boolean {
+    return !!this.getToken(); // Se le pone !! para convertir a boolean
   }
 }
