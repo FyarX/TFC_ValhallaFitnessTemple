@@ -1,1 +1,25 @@
-<p>tienda works!</p>
+<div class="w-full min-h-screen bg-gradient-to-b from-stone-950 via-gray-900 to-stone-900">
+  <section class="p-8 text-white max-w-[1400px] mx-auto">
+    <h2 class="mb-6 text-3xl font-bold text-center">Tienda de Suplementos</h2>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div *ngFor="let producto of productos" class="p-4 bg-gray-800 rounded-lg shadow-lg">
+        <div class="flex items-center justify-center w-full mb-4 overflow-hidden bg-white rounded h-60">
+          <img
+            [src]="'assets/img/products/' + producto.imagen"
+            alt="Imagen del producto"
+            class="object-contain max-w-full max-h-full"
+          />
+        </div>
+        <h3 class="text-xl font-semibold">{{ producto.nombre }}</h3>
+        <p class="text-sm text-gray-300">{{ producto.descripcion }}</p>
+        <section class="flex flex-row justify-between">
+          <p class="mt-2 font-bold text-yellow-400">{{ producto.precio | number: '1.2-2' }}€</p>
+          <p class="mt-2 text-sm text-gray-300">
+            Quedan <span class="text-red-500">{{ producto.stock }}</span>
+          </p>
+        </section>
+      </div>
+    </div>
+  </section>
+</div>
