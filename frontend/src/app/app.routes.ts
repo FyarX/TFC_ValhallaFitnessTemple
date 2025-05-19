@@ -6,6 +6,7 @@ import { TiendaComponent } from './pages/tienda/tienda.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';    
+import { ClasesComponent } from './pages/clases/clases.component';
 
 
 export const routes: Routes = [
@@ -33,6 +34,10 @@ export const routes: Routes = [
             {
                 path: 'contacto',
                 component: ContactoComponent,
+            },
+            {
+                path: 'clases',
+                component: ClasesComponent
             }
         ],
     },

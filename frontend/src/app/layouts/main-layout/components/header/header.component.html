@@ -63,6 +63,15 @@
             ></span>
           </a>
         </li>
+
+        <li class="group" *ngIf="isLoggedIn">
+          <a routerLink="/clases" class="relative inline-block transition duration-300 ease-in hover:scale-110">
+            Clases
+            <span
+              class="absolute inset-x-0 bottom-[-4px] h-0.5 origin-right scale-x-0 bg-yellow-500 transition-transform duration-300 group-hover:origin-left group-hover:scale-x-100"
+            ></span>
+          </a>
+        </li>
       </ul>
 
       <!-- Menú desplegable (Barra vertical) (≤ 640 px) -->
@@ -92,6 +101,12 @@
             Contacto
           </a>
         </li>
+         <li class="group" *ngIf="isLoggedIn">
+          <a routerLink="/clases" class="relative inline-block transition duration-300 ease-in hover:scale-110">
+            Clases
+          </a>
+        </li>
+
       </ul>
     </nav>
 

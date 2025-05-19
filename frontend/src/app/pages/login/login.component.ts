@@ -21,19 +21,50 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private auth: AuthService,
+    private router: Router
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      remember: [false]
+    });
+
+    // Cargar cookie al iniciar
+    const rememberedEmail = this.getCookie('email');
+    if (rememberedEmail) {
+      this.loginForm.patchValue({
+        email: rememberedEmail,
+        remember: true
+      });
+    }
+  }
+
+  onSubmit() {
+    if (this.loginForm.invalid) return;
+
+    const { email, password, remember } = this.loginForm.value;
+
+    this.auth.login({ email, password }).subscribe({
+      next: () => {
+        if (remember) {
+          document.cookie = `email=${email}; max-age=604800; path=/`; // 7 dias
+        } else {
+          document.cookie = `email=; max-age=0; path=/`;
+        }
+
+        this.router.navigate(['/inicio']);
+      },
+      error: err => alert('Error al iniciar sesión: ' + err.error)
     });
   }
 
-  onSubmit(){
-    if (this.loginForm.invalid) return;
-
-    this.auth.login(this.loginForm.value).subscribe({
-      next: () => this.router.navigate(['/inicio']),
-      error: err => alert('Error al iniciar sesión: ' + err.error)
-    });
+  getCookie(name: string): string | null {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop()?.split(';').shift() ?? null;
+    return null;
   }
 }
