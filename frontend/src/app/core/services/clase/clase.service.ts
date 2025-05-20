@@ -5,9 +5,8 @@ import { Observable } from 'rxjs';
 export interface Clase {
   id: number;
   nombre: string;
-  descripcion: string;
-  entrenador: string;
-  horario: string;
+  sala: string;
+  fecha: string;
 }
 
 @Injectable({ providedIn: 'root' })

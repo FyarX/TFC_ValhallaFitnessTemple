@@ -1,8 +1,6 @@
 package com.valhalla.valhallawebsite.models;
 
-import java.sql.Date;
-
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Id;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,7 +16,7 @@ public class Clase {
 
     private String nombre;
     private String sala;
-    private Date fecha;
+    private String fecha;
 
     // Getters y Setters
     public Long getId() {
@@ -45,11 +43,11 @@ public class Clase {
         this.sala = sala;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 }

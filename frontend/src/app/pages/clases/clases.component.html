@@ -1,12 +1,12 @@
-<!-- clases.component.html -->
+<div class="w-full min-h-screen bg-gradient-to-b from-stone-950 via-gray-900 to-stone-900">
 <section class="max-w-6xl px-4 py-12 mx-auto">
   <h2 class="mb-8 text-3xl font-bold text-center text-white">Nuestras Clases</h2>
   <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
     <div *ngFor="let clase of clases" class="p-6 bg-gray-800 rounded-xl shadow-lg text-white">
       <h3 class="text-xl font-bold">{{ clase.nombre }}</h3>
-      <p class="mt-2 text-sm text-gray-300">{{ clase.descripcion }}</p>
-      <p class="mt-2 text-sm text-yellow-400">Entrenador: {{ clase.entrenador }}</p>
-      <p class="mt-2 text-sm text-gray-300">Horario: {{ clase.horario }}</p>
+      <p class="mt-2 text-sm text-gray-300">Horario: {{ clase.sala }}</p>
+      <p class="mt-2 text-sm text-gray-300">Horario: {{ clase.fecha }}</p>
     </div>
   </div>
 </section>
+</div>
