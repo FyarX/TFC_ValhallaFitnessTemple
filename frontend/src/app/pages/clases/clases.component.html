@@ -3,9 +3,15 @@
   <h2 class="mb-8 text-3xl font-bold text-center text-white">Nuestras Clases</h2>
   <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
     <div *ngFor="let clase of clases" class="p-6 bg-gray-800 rounded-xl shadow-lg text-white">
-      <h3 class="text-xl font-bold">{{ clase.nombre }}</h3>
-      <p class="mt-2 text-sm text-gray-300">Horario: {{ clase.sala }}</p>
-      <p class="mt-2 text-sm text-gray-300">Horario: {{ clase.fecha }}</p>
+      <img [src]="getImageUrl(clase.nombre)" alt="{{ clase.nombre }}" class="w-full h-40 object-cover rounded-lg mb-4 blur-sm">
+      <h3 class="text-xl font-bold text-center">{{ clase.nombre }}</h3>
+      <p class="mt-2 text-sm text-gray-300">Lugar: {{ clase.sala }}</p>
+      <p class="mt-2 text-sm text-gray-300">Fecha: {{ clase.fecha }}</p>
+      <button
+        class="mt-4 px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+        (click)="apuntarse(clase)">
+        Quiero Apuntarme
+      </button>
     </div>
   </div>
 </section>

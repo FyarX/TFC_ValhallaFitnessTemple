@@ -18,4 +18,22 @@ export class ClasesComponent implements OnInit {
       error: err => console.error('Error al cargar clases', err)
     });
   }
+
+  getImageUrl(nombre: string): string {
+  const normalized = nombre.toLowerCase().replace(/\s+/g, '');
+  const basePath = 'assets/img/clases_img/'; // Carpeta dentro de /src/assets/
+  const map: { [key: string]: string } = {
+    spinning: 'spinning.jpg',
+    crossfit: 'crossfit.jpg',
+    yoga: 'yoga.jpg',
+    hiit: 'hiit.jpg',
+    pilates: 'pilates.jpg'
+  };
+
+  return basePath + (map[normalized] || 'default.jpg');
+}
+
+  apuntarse(clase: Clase): void {
+    alert(`Te has apuntado a la clase: ${clase.nombre}`);
+  }
 }
