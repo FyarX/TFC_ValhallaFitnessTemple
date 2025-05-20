@@ -56,7 +56,8 @@ public class AuthController {
                 "message", "Inicio de sesión exitoso",
                 "nombre", user.getNombre(),
                 "rol", user.getRol(),
-                "email", user.getEmail());
+                "email", user.getEmail(),
+                "id", user.getId());
         return ResponseEntity.ok(response);
     }
 }

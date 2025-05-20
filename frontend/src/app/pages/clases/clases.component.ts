@@ -1,6 +1,8 @@
+import { AuthService } from './../../core/services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Clase, ClaseService } from '../../core/services/clase/clase.service';
 import { NgFor } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-clases',
@@ -10,7 +12,7 @@ import { NgFor } from '@angular/common';
 export class ClasesComponent implements OnInit {
   clases: Clase[] = [];
 
-  constructor(private claseService: ClaseService) {}
+  constructor(private claseService: ClaseService, private auth: AuthService, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.claseService.getClases().subscribe({
@@ -34,6 +36,25 @@ export class ClasesComponent implements OnInit {
 }
 
   apuntarse(clase: Clase): void {
-    alert(`Te has apuntado a la clase: ${clase.nombre}`);
+  const usuarioId = this.auth.getUserId();
+  const claseId = clase.id;
+
+  if (usuarioId === null) {
+    console.error('El usuario no está autenticado.');
+    return;
   }
+
+  console.log('Usuario ID:', usuarioId);
+  console.log('Clase:', claseId);
+
+  this.http.post('http://localhost:8080/api/reservas', null, {
+    params: {
+      usuarioId: usuarioId.toString(), // asegúrate de que sea string
+      claseId: claseId.toString()
+    }
+  }).subscribe({
+    next: res => alert('Te has apuntado correctamente'),
+    error: err => console.error('Error al apuntarse', err)
+  });
+}
 }

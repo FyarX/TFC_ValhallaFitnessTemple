@@ -19,6 +19,7 @@ export class AuthService {
   login(credentials: { email: string; password: string }) {
     return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
       tap(user => {
+        console.log(user);
         localStorage.setItem('usuario', JSON.stringify(user));
       })
     );
@@ -43,4 +44,15 @@ export class AuthService {
   isLoggedIn(): boolean {
     return localStorage.getItem('usuario') !== null; // Verifica si el usuario está loggeado
   }
+
+  getUserId(): number | null {
+    const usuario = localStorage.getItem('usuario');
+    if (usuario) {
+      const parsedUser = JSON.parse(usuario);
+      return parsedUser.id; // Asegúrate de que el ID esté en el objeto de usuario
+    }
+    return null;
+  }
+
+  
 }
