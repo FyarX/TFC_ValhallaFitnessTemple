@@ -2,6 +2,8 @@ package com.valhalla.valhallawebsite.models;
 
 import jakarta.persistence.Id;
 
+import java.sql.Timestamp;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,7 +18,7 @@ public class Clase {
 
     private String nombre;
     private String sala;
-    private String fecha;
+    private Timestamp fecha;
 
     // Getters y Setters
     public Long getId() {
@@ -43,11 +45,11 @@ public class Clase {
         this.sala = sala;
     }
 
-    public String getFecha() {
+    public Timestamp getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Timestamp fecha) {
         this.fecha = fecha;
     }
 }

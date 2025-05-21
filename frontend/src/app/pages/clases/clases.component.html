@@ -6,7 +6,7 @@
       <img [src]="getImageUrl(clase.nombre)" alt="{{ clase.nombre }}" class="w-full h-40 object-cover rounded-lg mb-4 blur-sm">
       <h3 class="text-xl font-bold text-center">{{ clase.nombre }}</h3>
       <p class="mt-2 text-sm text-gray-300">Lugar: {{ clase.sala }}</p>
-      <p class="mt-2 text-sm text-gray-300">Fecha: {{ clase.fecha }}</p>
+      <p class="mt-2 text-sm text-gray-300">Fecha: {{ clase.fecha | date: "d MMM yyyy 'a las' hh:mm a" }}</p>
       <button
         class="mt-4 px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
         (click)="apuntarse(clase)">

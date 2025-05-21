@@ -3,16 +3,18 @@ import { Component, OnInit } from '@angular/core';
 import { Clase, ClaseService } from '../../core/services/clase/clase.service';
 import { NgFor } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-clases',
   templateUrl: './clases.component.html',
-  imports: [NgFor],
+  imports: [NgFor, CommonModule],
 })
 export class ClasesComponent implements OnInit {
   clases: Clase[] = [];
 
-  constructor(private claseService: ClaseService, private auth: AuthService, private http: HttpClient) {}
+  constructor(private claseService: ClaseService, private auth: AuthService, private http: HttpClient, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.claseService.getClases().subscribe({
@@ -40,7 +42,7 @@ export class ClasesComponent implements OnInit {
   const claseId = clase.id;
 
   if (usuarioId === null) {
-    console.error('El usuario no está autenticado.');
+    this.toastr.error('Debes iniciar sesión para apuntarte a una clase.');
     return;
   }
 
@@ -53,8 +55,14 @@ export class ClasesComponent implements OnInit {
       claseId: claseId.toString()
     }
   }).subscribe({
-    next: res => alert('Te has apuntado correctamente'),
-    error: err => console.error('Error al apuntarse', err)
+    next: res => this.toastr.success('Te has apuntado a la clase correctamente.'),
+    error: err => {
+    if (err.status === 409) {
+      this.toastr.warning('Ya estás apuntado a esta clase.');
+    } else {
+      this.toastr.error('Error al apuntarse a la clase. Por favor, inténtalo de nuevo más tarde.');
+    }
+  }
   });
 }
 }

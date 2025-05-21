@@ -7,6 +7,7 @@ import { ContactoComponent } from './pages/contacto/contacto.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';    
 import { ClasesComponent } from './pages/clases/clases.component';
+import { MisReservasComponent } from './pages/perfil/mis-clases/mis-clases.component';
 
 
 export const routes: Routes = [
@@ -54,10 +55,14 @@ export const routes: Routes = [
             },
         ],
     },
-    // {
-    //     path: 'admin',
-    //     component: LayoutAdminComponent,
-    //     children: [
-    //     ],
-    // }
+    {
+        path: 'perfil',
+        component: MainLayoutComponent,
+        children: [
+            {
+                path: 'mis-clases',
+                component: MisReservasComponent
+            }
+        ],
+    }
 ];
