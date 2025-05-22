@@ -76,7 +76,13 @@
                   <lucide-icon name="lock" class="absolute w-4 h-4 text-gray-400 -translate-y-1/2 left-3 top-1/2"></lucide-icon>
                 
                   <!-- Input Contraseña -->
-                  <input type="text" id="password" formControlName="password" class="w-full py-2 pl-10 pr-3 ml-2 text-black bg-gray-100 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                  <input type="password" id="password" formControlName="password" class="w-full py-2 pl-10 pr-3 ml-2 text-black bg-gray-100 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500">
+              </div>
+
+              <!-- Errores personalizados -->
+              <div *ngIf="registroForm.get('password')?.invalid && registroForm.get('password')?.touched" class="mt-1 text-sm text-red-500">
+                <span *ngIf="registroForm.get('password')?.errors?.['required']">Contraseña obligatoria.</span>
+                <span *ngIf="registroForm.get('password')?.errors?.['pattern']">Al menos 8 caracteres, una letra mayúscula, una minúscula y un número.</span>
               </div>
             </div>
 
@@ -91,6 +97,12 @@
                   <input type="number" id="phone" formControlName="telefono" class="appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-full py-2 pl-10 pr-3 ml-2 text-black bg-gray-100 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
                   />
               </div>
+
+              <!-- Errores personalizados -->
+              <div *ngIf="registroForm.get('telefono')?.invalid && registroForm.get('telefono')?.touched" class="mt-1 text-sm text-red-500">
+                <span *ngIf="registroForm.get('telefono')?.errors?.['required']">Teléfono obligatorio.</span>
+                <span *ngIf="registroForm.get('telefono')?.errors?.['pattern']">Formato inválido.</span>
+              </div>
             </div>
 
             <!-- DNI -->
@@ -104,6 +116,12 @@
                   <input type="text" id="dni" formControlName="dni" class="w-full py-2 pl-10 pr-3 ml-2 text-black bg-gray-100 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
                   />
               </div>
+
+               <!-- Errores personalizados -->
+            <div *ngIf="registroForm.get('dni')?.invalid && registroForm.get('dni')?.touched" class="mt-1 text-sm text-red-500">
+              <span *ngIf="registroForm.get('dni')?.errors?.['required']">DNI obligatorio.</span>
+              <span *ngIf="registroForm.get('dni')?.errors?.['pattern']">Formato de DNI inválido.</span>
+            </div>
             </div>
           </div>
 

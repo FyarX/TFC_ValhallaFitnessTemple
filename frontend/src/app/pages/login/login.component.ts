@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { LucideAngularModule, LUCIDE_ICONS, LucideIconProvider, User, Lock} from 'lucide-angular';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -57,7 +59,13 @@ export class LoginComponent {
 
         this.router.navigate(['/inicio']);
       },
-      error: err => alert('Error al iniciar sesión: ' + err.error)
+      error: err => {
+        this.toastr.error('Email o contraseña inválidos, intente de nuevo', 'Error', {
+          timeOut: 3000,
+          progressBar: true,
+          closeButton: true
+        });
+      }
     });
   }
 

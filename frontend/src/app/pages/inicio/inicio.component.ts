@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ElementRef, ViewChild } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LucideAngularModule, LUCIDE_ICONS, LucideIconProvider, Star, StarHalf } from 'lucide-angular';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-inicio',
@@ -18,7 +19,17 @@ import { LucideAngularModule, LUCIDE_ICONS, LucideIconProvider, Star, StarHalf }
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css'
 })
-export class InicioComponent {
+export class InicioComponent implements OnInit {
+
+  constructor(private toastr: ToastrService) {}
+
+  ngOnInit(){
+    if (localStorage.getItem('registroExitoso') === 'true') {
+      this.toastr.success('Usuario registrado con éxito', '¡Bienvenido!');
+      localStorage.removeItem('registroExitoso'); // Limpieza de bandera
+    }
+  }
+
   //! Carrusel de tarifas
   @ViewChild('carousel', { static: false }) carousel!: ElementRef;
   currentIndex = 0;
