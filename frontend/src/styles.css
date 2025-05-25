@@ -10,3 +10,15 @@
   left: auto !important;
   z-index: 9999 !important;
 }
+
+.swal2-confirm-custom,
+.swal2-cancel-custom {
+  color: black !important;
+}
+
+/* Hover blanco al pasar el cursor */
+.swal2-popup .swal2-confirm:hover,
+.swal2-popup .swal2-cancel:hover {
+  color: white !important;
+  background-color: #222 !important;
+}

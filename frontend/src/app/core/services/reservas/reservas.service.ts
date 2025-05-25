@@ -27,4 +27,13 @@ export class ReservasService {
   getReservasPorUsuario(usuarioId: number): Observable<Reserva[]> {
     return this.http.get<Reserva[]>(`${this.apiUrl}?usuarioId=${usuarioId}`);
   }
+
+  cancelarReserva(usuarioId: number, claseId: number): Observable<any> {
+  return this.http.delete(`http://localhost:8080/api/reservas`, {
+    params: {
+      usuarioId: usuarioId.toString(),
+      claseId: claseId.toString()
+    }
+  });
+}
 }

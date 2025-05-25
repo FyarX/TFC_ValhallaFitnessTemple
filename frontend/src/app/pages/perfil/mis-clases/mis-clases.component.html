@@ -6,6 +6,9 @@
           <h3 class="text-lg font-semibold">{{ reserva.clase.nombre }}</h3>
           <p>Sala: {{ reserva.clase.sala }}</p>
           <p>Fecha: {{ reserva.fecha | date: "dd MMM yyyy 'a las' hh:mm a" }}</p>
+          <button (click)="cancelarReserva(reserva)" class="mt-2 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            Cancelar Reserva
+          </button>
         </li>
       </ul>
       <ng-template #sinReservas>

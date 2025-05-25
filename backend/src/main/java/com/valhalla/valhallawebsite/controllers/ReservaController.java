@@ -2,11 +2,13 @@ package com.valhalla.valhallawebsite.controllers;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,4 +69,19 @@ public class ReservaController {
         List<Reserva> reservas = reservaRepository.findByUsuarioId(usuarioId);
         return ResponseEntity.ok(reservas);
     }
+
+    @DeleteMapping
+public ResponseEntity<?> cancelarReserva(@RequestParam("usuarioId") Long usuarioId,
+                                         @RequestParam("claseId") Long claseId) {
+    Optional<Reserva> reserva = reservaRepository.findByUsuarioIdAndClaseId(usuarioId, claseId);
+
+    if (reserva.isPresent()) {
+        reservaRepository.delete(reserva.get());
+        return ResponseEntity.ok(Map.of("message", "Reserva cancelada"));
+    } else {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                             .body("No se encontró la reserva.");
+    }
+}
+
 }
