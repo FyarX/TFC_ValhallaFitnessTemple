@@ -12,8 +12,9 @@ services:
       - key: JAVA_VERSION
         value: 17
 
-  - type: static
+  - type: web
     name: frontend
+    env: static
     repo: https://github.com/FyarX/TFC_ValhallaFitnessTemple/tree/master/frontend
     branch: main
     buildCommand: npm install && npm run build -- --configuration production
