@@ -17,6 +17,6 @@ services:
     env: static
     repo: https://github.com/FyarX/TFC_ValhallaFitnessTemple
     branch: main
-    buildCommand: npm install && npm run build -- --configuration production
+    buildCommand: npm install && npm run build -- --configuration=production
     publishDir: dist/front_valhalla
     rootDir: frontend
