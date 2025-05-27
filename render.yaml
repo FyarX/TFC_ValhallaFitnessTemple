@@ -2,7 +2,7 @@ services:
   - type: web
     name: backend
     env: java
-    repo: https://https://github.com/FyarX/TFC_ValhallaFitnessTemple/tree/master/backend
+    repo: https://github.com/FyarX/TFC_ValhallaFitnessTemple
     plan: starter
     branch: main
     buildCommand: ./gradlew build
@@ -15,7 +15,7 @@ services:
   - type: web
     name: frontend
     env: static
-    repo: https://github.com/FyarX/TFC_ValhallaFitnessTemple/tree/master/frontend
+    repo: https://github.com/FyarX/TFC_ValhallaFitnessTemple
     branch: main
     buildCommand: npm install && npm run build -- --configuration production
     publishDir: dist/front_valhalla
