@@ -5,11 +5,19 @@ import { NgFor } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import { LucideAngularModule, LUCIDE_ICONS, LucideIconProvider, SquarePlus } from 'lucide-angular';
 
 @Component({
   selector: 'app-clases',
   templateUrl: './clases.component.html',
-  imports: [NgFor, CommonModule],
+  imports: [NgFor, CommonModule, LucideAngularModule],
+  providers: [
+    {
+      provide: LUCIDE_ICONS,
+      multi: true,
+      useValue: new LucideIconProvider({ SquarePlus })
+    }
+  ],
 })
 export class ClasesComponent implements OnInit {
   clases: Clase[] = [];
@@ -17,11 +25,14 @@ export class ClasesComponent implements OnInit {
   constructor(private claseService: ClaseService, private auth: AuthService, private http: HttpClient, private toastr: ToastrService) {}
 
   ngOnInit(): void {
-    this.claseService.getClases().subscribe({
-      next: data => this.clases = data,
-      error: err => console.error('Error al cargar clases', err)
-    });
-  }
+  this.claseService.getClases().subscribe({
+    next: data => {
+      const ahora = new Date();
+      this.clases = data.filter(clase => new Date(clase.fecha) > ahora);
+    },
+    error: err => console.error('Error al cargar clases', err)
+  });
+}
 
   getImageUrl(nombre: string): string {
   const normalized = nombre.toLowerCase().replace(/\s+/g, '');
@@ -65,4 +76,9 @@ export class ClasesComponent implements OnInit {
   }
   });
 }
+
+  isAdmin(): boolean {
+    return this.auth.getUserRole() === 'admin'; // Verifica si el rol del usuario es 'admin'
+  }
+
 }

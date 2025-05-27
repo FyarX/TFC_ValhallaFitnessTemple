@@ -12,10 +12,12 @@ export class AuthService {
   
   constructor(private http: HttpClient) {}
 
+  //? Método para registrar un nuevo usuario (Comunica con el backend)
   register(userData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, userData);
   }
 
+  //? Método para iniciar sesión
   login(credentials: { email: string; password: string }) {
     return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
       tap(user => {
@@ -25,15 +27,21 @@ export class AuthService {
     );
   }
 
+  //? Método para cerrar la sesión del usuario
   logout() {
     localStorage.removeItem('usuario');
     localStorage.removeItem('rol');
     localStorage.removeItem('token');
   }
 
+  //? Devuelve el rol del usuario almacenado en localStorage
   getUserRole(): string | null {
-    const rol = localStorage.getItem('rol');
-    return rol;
+    const usuario = localStorage.getItem('usuario');
+    if (usuario) {
+      const parsedUser = JSON.parse(usuario); // Se le hace un parseo para convertir el string a objeto
+      return parsedUser.rol ?? null;
+    }
+    return null;
   }
 
   getToken(): string | null {
@@ -41,10 +49,12 @@ export class AuthService {
   }
 
 
+  //? Verifica si el usuario está loggeado
   isLoggedIn(): boolean {
     return localStorage.getItem('usuario') !== null; // Verifica si el usuario está loggeado
   }
 
+  //? Devuelve el ID del usuario almacenado en localStorage
   getUserId(): number | null {
     const usuario = localStorage.getItem('usuario');
     if (usuario) {

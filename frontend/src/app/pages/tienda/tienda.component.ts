@@ -24,18 +24,21 @@ export class TiendaComponent implements OnInit {
   private authService = inject(AuthService);
   userRole: string | null = null; // Rol del usuario
 
-  constructor(private productoService: ProductoService) { }
+  constructor(private productoService: ProductoService, private auth: AuthService) { }
 
   ngOnInit(){
+    // Se cargan todos los productos al iniciar el componente
     this.productoService.getProductos().subscribe({
       next: (res) => this.productos = res,
       error: (err) => console.error('Error al cargar productos', err)
     });
 
-    this.userRole = this.authService.getUserRole(); // Inicializa el rol del usuario
+    console.log('User role:', this.userRole); // Para depuración
+
+    this.userRole = this.auth.getUserRole(); // Inicializa el rol del usuario
   }
 
-  // Método para verificar si el usuario es administrador
+  //? Método para verificar si el usuario es administrador
   isAdmin(): boolean {
     return this.userRole === 'admin'; // Verifica si el rol del usuario es 'admin'
   }

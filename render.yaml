@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: backend
+    env: java
+    repo: https://https://github.com/FyarX/TFC_ValhallaFitnessTemple/tree/master/backend
+    plan: starter
+    branch: main
+    buildCommand: ./gradlew build
+    startCommand: java -jar backend/build/libs/valhallawebsite-0.0.1-SNAPSHOT.jar
+    rootDir: backend
+    envVars:
+      - key: JAVA_VERSION
+        value: 17
+
+  - type: static
+    name: frontend
+    repo: https://github.com/FyarX/TFC_ValhallaFitnessTemple/tree/master/frontend
+    branch: main
+    buildCommand: npm install && npm run build -- --configuration production
+    publishDir: dist/front_valhalla
+    rootDir: frontend
