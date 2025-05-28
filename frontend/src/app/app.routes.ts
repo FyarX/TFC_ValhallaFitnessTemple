@@ -8,6 +8,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';    
 import { ClasesComponent } from './pages/clases/clases.component';
 import { MisReservasComponent } from './pages/perfil/mis-clases/mis-clases.component';
+import { NuevaClaseComponent } from './pages/crear/nueva-clase/nueva-clase.component';
+import { NuevoProductoComponent } from './pages/crear/nuevo-producto/nuevo-producto.component';
 
 
 export const routes: Routes = [
@@ -64,5 +66,19 @@ export const routes: Routes = [
                 component: MisReservasComponent
             }
         ],
+    },
+    {
+        path: 'crear',
+        component: MainLayoutComponent,
+        children: [
+            {
+                path: 'nueva-clase',
+                component: NuevaClaseComponent
+            },
+            {
+                path: 'nuevo-producto',
+                component: NuevoProductoComponent
+            }
+        ]
     }
 ];

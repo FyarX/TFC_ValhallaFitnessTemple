@@ -21,6 +21,7 @@ module.exports = {
         'exactly1400': {'max': '1400px'},
         'exactly1250': {'max': '1250px'},
         'exactly1350': {'max': '1350px'},
+        'exactly850': {'max': '850px'},
       },
       animation: {
         'fade-in': 'fadeIn 1s ease-out both',

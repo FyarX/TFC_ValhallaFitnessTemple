@@ -6,11 +6,12 @@ import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { LucideAngularModule, LUCIDE_ICONS, LucideIconProvider, SquarePlus } from 'lucide-angular';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-clases',
   templateUrl: './clases.component.html',
-  imports: [NgFor, CommonModule, LucideAngularModule],
+  imports: [NgFor, CommonModule, LucideAngularModule, RouterModule],
   providers: [
     {
       provide: LUCIDE_ICONS,

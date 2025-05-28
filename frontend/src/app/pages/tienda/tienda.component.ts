@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { NgFor, NgIf } from '@angular/common';
 import { LucideAngularModule, LUCIDE_ICONS, LucideIconProvider, SquarePlus } from 'lucide-angular';
 import { AuthService } from '../../core/services/auth/auth.service';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-tienda',
-  imports: [NgFor, NgIf, CommonModule, LucideAngularModule],
+  imports: [NgFor, NgIf, CommonModule, LucideAngularModule, RouterModule],
   providers: [
     {
       provide: LUCIDE_ICONS,
