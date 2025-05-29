@@ -18,4 +18,10 @@ export class ClaseService {
   getClases(): Observable<Clase[]> {
     return this.http.get<Clase[]>(this.apiUrl);
   }
+
+  crearClase(formData: FormData): Observable<Object> {
+    return this.http.post('http://localhost:8080/api/clases', formData, {
+    responseType: 'text' as 'json'
+   });
+  }
 }
