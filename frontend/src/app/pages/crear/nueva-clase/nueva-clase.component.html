@@ -8,15 +8,32 @@
             <article>
                 <label for="nombre" class="block text-sm font-medium text-white">Nombre de la clase:</label>
                 <input type="text" id="nombre" formControlName="nombre" class="mt-4 block w-4/5 p-2 mx-auto bg-gray-700 border border-gray-600 rounded focus:ring-yellow-500 focus:border-yellow-500 text-white" required>
+                
+                <div *ngIf="nuevaClaseForm.get('nombre')?.invalid && nuevaClaseForm.get('nombre')?.touched" class="mt-1 text-sm text-red-500 text-center">
+                    <span *ngIf="nuevaClaseForm.get('nombre')?.errors?.['required']">El nombre es obligatorio.</span>
+                    <span *ngIf="nuevaClaseForm.get('nombre')?.errors?.['pattern']">Solo letras y espacios, entre 3 y 30 caracteres.</span>
+                </div>
             </article>
+
             <article>
                 <label for="sala" class="block text-sm font-medium text-white">Sala:</label>
                 <input type="text" id="sala" formControlName="sala" class="mt-4 block w-4/5 mx-auto p-2 bg-gray-700 border border-gray-600 rounded focus:ring-yellow-500 focus:border-yellow-500 text-white" required>
+            
+                <div *ngIf="nuevaClaseForm.get('sala')?.invalid && nuevaClaseForm.get('sala')?.touched" class="mt-1 text-sm text-red-500 text-center">
+                    <span *ngIf="nuevaClaseForm.get('sala')?.errors?.['required']">La sala es obligatoria.</span>
+                    <span *ngIf="nuevaClaseForm.get('sala')?.errors?.['pattern']">Solo letras y espacios, entre 3 y 50 caracteres.</span>
+                </div>
             </article>
+
             <article>
                 <label for="fecha" class="block text-sm font-medium text-white">Fecha y hora:</label>
                 <!--  -->
                 <input type="text" id="fecha" formControlName="fecha" (input)="formatearFecha($event)" class="mt-4 block w-4/5 mx-auto p-2 bg-gray-700 border border-gray-600 rounded focus:ring-yellow-500 focus:border-yellow-500 text-white" required>
+            
+                <div *ngIf="nuevaClaseForm.get('fecha')?.invalid && nuevaClaseForm.get('fecha')?.touched" class="mt-1 text-sm text-red-500 text-center">
+                    <span *ngIf="nuevaClaseForm.get('fecha')?.errors?.['required']">La fecha es obligatoria.</span>
+                    <span *ngIf="nuevaClaseForm.get('fecha')?.errors?.['pattern']">Formato inválido. Usa DD-MM-YYYY HH:mm.</span>
+                </div>
             </article>
             
             <button class="w-44 mx-auto px-4 py-2 mt-4 font-bold text-white bg-yellow-500 rounded-lg mb-16 hover:bg-yellow-600 focus:outline-none focus:ring focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed">Crear Clase</button>

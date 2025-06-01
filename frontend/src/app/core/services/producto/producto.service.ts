@@ -12,16 +12,15 @@ export interface Producto {
   stock: number;
 }
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductoService {
   // URL de la API de productos
   private apiUrl = 'http://localhost:8080/api/productos';
 
   // Constructor de la clase (Llamado al servicio HttpClient)
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   //! Definicion de métodos del servicio
   // Obtener todos los productos
@@ -30,8 +29,21 @@ export class ProductoService {
   }
 
   // Crear un nuevo producto
-  crearProducto(producto: Producto): Observable<Producto> {
-    return this.http.post<Producto>(this.apiUrl, producto);
+  crearProducto(producto: {
+    nombre: string;
+    categoria: string;
+    precio: string;
+    stock: string;
+    imagen: File;
+  }): Observable<any> {
+    const formData = new FormData();
+    formData.append('nombre', producto.nombre);
+    formData.append('categoria', producto.categoria);
+    formData.append('precio', producto.precio);
+    formData.append('stock', producto.stock);
+    formData.append('imagen', producto.imagen);
+
+    return this.http.post<any>(this.apiUrl, formData);
   }
 
   // Actualizar un producto existente

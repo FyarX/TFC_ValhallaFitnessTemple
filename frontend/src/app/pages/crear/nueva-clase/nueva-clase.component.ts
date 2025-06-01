@@ -3,10 +3,11 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ClaseService } from '../../../core/services/clase/clase.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-nueva-clase',
-  imports: [ ReactiveFormsModule ],
+  imports: [ ReactiveFormsModule, NgIf ], 
   templateUrl: './nueva-clase.component.html',
   styleUrl: './nueva-clase.component.css'
 })

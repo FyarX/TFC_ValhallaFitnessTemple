@@ -35,7 +35,6 @@ public class ClaseController {
     @RequestParam("sala") String sala,
     @RequestParam("fecha") String fechaStr
 ) {
-    // Aquí puedes parsear fechaStr a un LocalDateTime si es necesario
     LocalDateTime fecha;
     try {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");

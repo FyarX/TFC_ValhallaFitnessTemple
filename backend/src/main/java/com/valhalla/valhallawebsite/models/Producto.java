@@ -10,7 +10,6 @@ public class Producto {
     private Long id;
 
     private String nombre;
-    private String descripcion;
     private String imagen;
     private double precio;
     private int stock;
@@ -31,14 +30,6 @@ public class Producto {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
     }
 
     public String getImagen() {
@@ -72,4 +63,5 @@ public class Producto {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
+
 }
