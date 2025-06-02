@@ -14,5 +14,5 @@ services:
     repo: https://github.com/FyarX/TFC_ValhallaFitnessTemple
     branch: main
     rootDir: frontend
-    buildCommand: npm install && npx ng build --configuration=production
+    buildCommand: npm install && npm run build
     publishDir: dist/front_valhalla
