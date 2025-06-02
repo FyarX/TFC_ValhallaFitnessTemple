@@ -1,7 +1,7 @@
 services:
   - type: web
     name: backend
-    env: java
+    env: java17
     repo: https://github.com/FyarX/TFC_ValhallaFitnessTemple
     branch: main
     buildCommand: chmod +x ./gradlew && ./gradlew build
