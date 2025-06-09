@@ -8,9 +8,8 @@ describe('TiendaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TiendaComponent]
-    })
-    .compileComponents();
+      imports: [TiendaComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TiendaComponent);
     component = fixture.componentInstance;
@@ -19,5 +18,12 @@ describe('TiendaComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('isAdmin', () => {
+    it('Debería devolver true si el rol del usuario es admin', () => {
+      component.userRole = 'admin'; // Simula que el usuario es administrador
+      expect(component.isAdmin()).toBeTrue();
+    });
   });
 });
