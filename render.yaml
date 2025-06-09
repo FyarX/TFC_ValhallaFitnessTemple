@@ -1,21 +1,23 @@
 services:
   - type: web
     name: backend
-    env: java17
-    repo: https://github.com/FyarX/TFC_ValhallaFitnessTemple
+    env: java
     branch: master
-    buildCommand: chmod +x ./gradlew && ./gradlew build
-    startCommand: java -jar backend/build/libs/valhallawebsite-0.0.1-SNAPSHOT.jar
+    repo: https://github.com/FyarX/TFC_ValhallaFitnessTemple
     rootDir: backend
+    buildCommand: ./gradlew build
+    startCommand: java -jar build/libs/valhallawebsite-0.0.1-SNAPSHOT.jar
     envVars:
       - key: JAVA_VERSION
         value: 17
+      - key: PORT
+        value: 8080
 
   - type: web
     name: frontend
     env: static
-    repo: https://github.com/FyarX/TFC_ValhallaFitnessTemple
     branch: master
+    repo: https://github.com/FyarX/TFC_ValhallaFitnessTemple
     rootDir: frontend
     buildCommand: npm install && npm run build
     publishDir: dist/front_valhalla
