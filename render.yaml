@@ -1,5 +1,5 @@
 services:
-  - type: pserv
+  - type: web
     name: backend
     env: java
     branch: master
@@ -13,7 +13,7 @@ services:
       - key: PORT
         value: 8080
 
-  - type: web
+  - type: static
     name: frontend
     env: static
     branch: master
