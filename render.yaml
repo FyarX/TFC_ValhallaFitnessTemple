@@ -1,7 +1,7 @@
 services:
   - type: web
     name: backend
-    env: java
+    env: java17
     branch: master
     repo: https://github.com/FyarX/TFC_ValhallaFitnessTemple
     rootDir: backend
@@ -13,7 +13,7 @@ services:
       - key: PORT
         value: 8080
 
-  - type: static
+  - type: web
     name: frontend
     env: static
     branch: master
