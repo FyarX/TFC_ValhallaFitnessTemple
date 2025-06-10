@@ -17,7 +17,7 @@ export interface Producto {
 })
 export class ProductoService {
   // URL de la API de productos
-  private apiUrl = 'http://localhost:8080/api/productos';
+  private apiUrl = 'https://backend-valhallaft.onrender.com/api/productos';
 
   // Constructor de la clase (Llamado al servicio HttpClient)
   constructor(private http: HttpClient) {}

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.sql.Timestamp;
 
-@CrossOrigin(origins = "http://localhost:4200") // para evitar problemas de CORS
+@CrossOrigin(origins = "https://papayawhip-mandrill-804851.hostingersite.com/") // para evitar problemas de CORS
 @RestController
 @RequestMapping("/api/clases") 
 public class ClaseController {

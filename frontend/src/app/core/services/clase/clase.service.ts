@@ -11,7 +11,7 @@ export interface Clase {
 
 @Injectable({ providedIn: 'root' })
 export class ClaseService {
-  private apiUrl = 'http://localhost:8080/api/clases';
+  private apiUrl = 'https://backend-valhallaft.onrender.com/api/clases';
 
   constructor(private http: HttpClient) {}
 
@@ -20,7 +20,7 @@ export class ClaseService {
   }
 
   crearClase(formData: FormData): Observable<Object> {
-    return this.http.post('http://localhost:8080/api/clases', formData, {
+    return this.http.post('https://backend-valhallaft.onrender.com/api/clases', formData, {
     responseType: 'text' as 'json'
    });
   }

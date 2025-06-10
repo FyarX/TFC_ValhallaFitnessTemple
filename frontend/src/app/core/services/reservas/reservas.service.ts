@@ -17,7 +17,7 @@ export interface Reserva {
   providedIn: 'root'
 })
 export class ReservasService {
-  private apiUrl = 'http://localhost:8080/api/reservas';
+  private apiUrl = 'https://backend-valhallaft.onrender.com/api/reservas';
   constructor(private http: HttpClient) { }
 
   getReservas(): Observable<Reserva[]> {
@@ -29,7 +29,7 @@ export class ReservasService {
   }
 
   cancelarReserva(usuarioId: number, claseId: number): Observable<any> {
-  return this.http.delete(`http://localhost:8080/api/reservas`, {
+  return this.http.delete(`https://backend-valhallaft.onrender.com/api/reservas`, {
     params: {
       usuarioId: usuarioId.toString(),
       claseId: claseId.toString()

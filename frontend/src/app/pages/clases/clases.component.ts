@@ -61,7 +61,7 @@ export class ClasesComponent implements OnInit {
   console.log('Usuario ID:', usuarioId);
   console.log('Clase:', claseId);
 
-  this.http.post('http://localhost:8080/api/reservas', null, {
+  this.http.post('https://backend-valhallaft.onrender.com/api/reservas', null, {
     params: {
       usuarioId: usuarioId.toString(), // asegúrate de que sea string
       claseId: claseId.toString()

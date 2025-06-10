@@ -18,7 +18,7 @@ import com.valhalla.valhallawebsite.repositories.ProductoRepository;
 
 @RestController
 @RequestMapping("/api/productos")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://papayawhip-mandrill-804851.hostingersite.com/")
 public class ProductoController {
 
     private final ProductoRepository repo;

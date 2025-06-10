@@ -24,7 +24,7 @@ import com.valhalla.valhallawebsite.repositories.UserRepository;
 
 @RestController
 @RequestMapping("/api/reservas")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://papayawhip-mandrill-804851.hostingersite.com/")
 public class ReservaController {
     private final ReservaRepository reservaRepository;
     private final UserRepository usuarioRepository;
