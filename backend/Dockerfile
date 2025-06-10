@@ -1,8 +1,19 @@
 # Etapa 1: Construcción
-FROM gradle:8.4-jdk17 AS build
+FROM eclipse-temurin:17-jdk AS build
 WORKDIR /app
-COPY . .
-RUN gradle build -x test
+
+# Copiar archivos individuales
+COPY gradlew .
+COPY build.gradle .
+COPY settings.gradle .
+
+# Copiar carpetas necesarias
+COPY gradle/ gradle/
+COPY src/ src/
+
+# Dar permisos al wrapper y construir
+RUN chmod +x gradlew
+RUN ./gradlew build -x test
 
 # Etapa 2: Ejecución
 FROM eclipse-temurin:17-jdk
