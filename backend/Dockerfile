@@ -13,7 +13,7 @@ COPY src/ src/
 
 # Dar permisos al wrapper y construir
 RUN chmod +x gradlew
-RUN ./gradlew build -x test
+RUN ./gradlew build -x test --stacktrace --info
 
 # Etapa 2: Ejecución
 FROM eclipse-temurin:17-jdk
