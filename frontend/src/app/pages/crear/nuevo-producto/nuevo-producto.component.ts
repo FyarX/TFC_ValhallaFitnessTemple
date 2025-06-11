@@ -20,7 +20,6 @@ export class NuevoProductoComponent {
   nuevoProductoForm = new FormGroup({
     nombre: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-zÁÉÍÓÚÑáéíóúñ\s]{3,30}$/)]),
     categoria: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-zÁÉÍÓÚÑáéíóúñ\s]{3,50}$/)]),
-    imagen: new FormControl('', [Validators.required]),
     precio: new FormControl('', [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)]), // Formato numérico con hasta dos decimales
     stock: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)]) // Solo números enteros
   });
@@ -31,7 +30,6 @@ export class NuevoProductoComponent {
   const fileInput = event.target as HTMLInputElement;
   if (fileInput.files && fileInput.files.length > 0) {
     this.selectedFile = fileInput.files[0];
-    this.nuevoProductoForm.get('imagen')?.setValue(this.selectedFile.name);
   }
 }
 
