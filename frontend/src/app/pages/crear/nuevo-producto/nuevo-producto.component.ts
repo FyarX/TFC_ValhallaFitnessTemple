@@ -42,7 +42,7 @@ export class NuevoProductoComponent {
     formData.append('stock', this.nuevoProductoForm.get('stock')?.value ?? '');
     formData.append('imagen', this.selectedFile);
 
-    this.http.post('/api/productos', formData).subscribe({
+    this.http.post('https://backend-valhallaft.onrender.com/api/productos', formData).subscribe({
       next: () => this.toastr.success('Producto creado exitosamente'),
       error: (error) => this.toastr.error('Error al crear el producto: ' + error.message)
     });
