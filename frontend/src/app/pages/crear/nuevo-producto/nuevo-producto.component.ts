@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-nuevo-producto',
-  imports: [ ReactiveFormsModule, NgIf],
+  imports: [ ReactiveFormsModule],
   templateUrl: './nuevo-producto.component.html',
   styleUrl: './nuevo-producto.component.css'
 })
