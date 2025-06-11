@@ -9,7 +9,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/uploads/**")
-                .addResourceLocations("file:C:/Users/aaron/Desktop/All/workspace/TFC_ValhallaFitnessTemple/backend/uploads/");
+                .addResourceLocations("file:uploads/");
     }
 
 }
