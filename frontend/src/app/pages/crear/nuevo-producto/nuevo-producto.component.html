@@ -3,31 +3,68 @@
         <img src="assets/img/producto_nuevoProducto.jpg" alt="Clase de muestra" class="w-96 object-cover rounded-lg exactly850:hidden">
         <article class="bg-gray-800 flex flex-col items-center justify-center w-full h-full rounded-lg shadow-lg tablet:mx-12 movil_pequeno:mx-6">
             <h2 class="text-3xl font-bold text-center mt-16 text-white">Crear Nuevo Producto</h2>
-        <!--  (ngSubmit)="onSubmit()" -->
-        <form (ngSubmit)="onSubmit()" class=" p-6 rounded-lg shadow-lg w-full flex flex-col gap-6 px-6" [formGroup]="nuevoProductoForm">
-            <article>
-                <label for="nombre" class="block text-sm font-medium text-white">Nombre del producto:</label>
-                <input type="text" id="nombre" formControlName="nombre" class="mt-4 block w-4/5 p-2 mx-auto bg-gray-700 border border-gray-600 rounded focus:ring-yellow-500 focus:border-yellow-500 text-white" required>
-            </article>
-            <article>
-                <label for="categoria" class="block text-sm font-medium text-white">Categoría</label>
-                <input type="text" id="categoria" formControlName="categoria" class="mt-4 block w-4/5 mx-auto p-2 bg-gray-700 border border-gray-600 rounded focus:ring-yellow-500 focus:border-yellow-500 text-white" required>
-            </article>
-            <article>
-                <label for="precio" class="block text-sm font-medium text-white">Precio</label>
-                <input type="number" id="precio" formControlName="precio" class="mt-4 block w-4/5 mx-auto p-2 bg-gray-700 border border-gray-600 rounded focus:ring-yellow-500 focus:border-yellow-500 text-white" required>
-            </article>
-            <article>
-                <label for="stock" class="block text-sm font-medium text-white">Stock</label>
-                <input type="number" id="stock" formControlName="stock" class="mt-4 block w-4/5 mx-auto p-2 bg-gray-700 border border-gray-600 rounded focus:ring-yellow-500 focus:border-yellow-500 text-white" required>
-            </article>
-            <article>
-                <label for="imagen" class="block text-sm font-medium text-white">Imagen</label>
-                <input type="file" (change)="onFileSelected($event)" accept="image/*" id="imagen" class="mt-4 block w-4/5 mx-auto p-2 bg-gray-700 border border-gray-600 rounded focus:ring-yellow-500 focus:border-yellow-500 text-white" required>
-            </article>
             
-            <button class="w-44 mx-auto px-4 py-2 mt-4 font-bold text-white bg-yellow-500 rounded-lg mb-16 hover:bg-yellow-600 focus:outline-none focus:ring focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed">Crear Producto</button>
-        </form>
+        <form (ngSubmit)="onSubmit()" class="p-6 rounded-lg shadow-lg w-full flex flex-col gap-6 px-6" [formGroup]="nuevoProductoForm">
+  
+  <article>
+    <label for="nombre" class="block text-sm font-medium text-white">Nombre del producto:</label>
+    <input type="text" id="nombre" formControlName="nombre"
+           class="mt-4 block w-4/5 p-2 mx-auto bg-gray-700 border border-gray-600 rounded focus:ring-yellow-500 focus:border-yellow-500 text-white" required>
+
+    <div *ngIf="nuevoProductoForm.get('nombre')?.invalid && nuevoProductoForm.get('nombre')?.touched" class="mt-1 text-sm text-red-500 text-center">
+      <span *ngIf="nuevoProductoForm.get('nombre')?.errors?.['required']">El nombre es obligatorio.</span>
+      <span *ngIf="nuevoProductoForm.get('nombre')?.errors?.['pattern']">Solo letras y espacios, entre 3 y 30 caracteres.</span>
+    </div>
+  </article>
+
+  <article>
+    <label for="categoria" class="block text-sm font-medium text-white">Categoría:</label>
+    <input type="text" id="categoria" formControlName="categoria"
+           class="mt-4 block w-4/5 mx-auto p-2 bg-gray-700 border border-gray-600 rounded focus:ring-yellow-500 focus:border-yellow-500 text-white" required>
+
+    <div *ngIf="nuevoProductoForm.get('categoria')?.invalid && nuevoProductoForm.get('categoria')?.touched" class="mt-1 text-sm text-red-500 text-center">
+      <span *ngIf="nuevoProductoForm.get('categoria')?.errors?.['required']">La categoría es obligatoria.</span>
+      <span *ngIf="nuevoProductoForm.get('categoria')?.errors?.['pattern']">Solo letras y espacios, entre 3 y 50 caracteres.</span>
+    </div>
+  </article>
+
+  <article>
+    <label for="precio" class="block text-sm font-medium text-white">Precio:</label>
+    <input type="number" id="precio" formControlName="precio"
+           class="mt-4 block w-4/5 mx-auto p-2 bg-gray-700 border border-gray-600 rounded focus:ring-yellow-500 focus:border-yellow-500 text-white" required>
+
+    <div *ngIf="nuevoProductoForm.get('precio')?.invalid && nuevoProductoForm.get('precio')?.touched" class="mt-1 text-sm text-red-500 text-center">
+      <span *ngIf="nuevoProductoForm.get('precio')?.errors?.['required']">El precio es obligatorio.</span>
+      <span *ngIf="nuevoProductoForm.get('precio')?.errors?.['pattern']">Debe ser un número válido (máx. 2 decimales).</span>
+    </div>
+  </article>
+
+  <article>
+    <label for="stock" class="block text-sm font-medium text-white">Stock:</label>
+    <input type="number" id="stock" formControlName="stock"
+           class="mt-4 block w-4/5 mx-auto p-2 bg-gray-700 border border-gray-600 rounded focus:ring-yellow-500 focus:border-yellow-500 text-white" required>
+
+    <div *ngIf="nuevoProductoForm.get('stock')?.invalid && nuevoProductoForm.get('stock')?.touched" class="mt-1 text-sm text-red-500 text-center">
+      <span *ngIf="nuevoProductoForm.get('stock')?.errors?.['required']">El stock es obligatorio.</span>
+      <span *ngIf="nuevoProductoForm.get('stock')?.errors?.['pattern']">Debe ser un número entero positivo.</span>
+    </div>
+  </article>
+
+  <article>
+    <label for="imagen" class="block text-sm font-medium text-white">Imagen:</label>
+    <input type="file" (change)="onFileSelected($event)" accept="image/*" id="imagen"
+           class="mt-4 block w-4/5 mx-auto p-2 bg-gray-700 border border-gray-600 rounded focus:ring-yellow-500 focus:border-yellow-500 text-white" required>
+
+    <div *ngIf="!selectedFile && imagenTocada" class="mt-1 text-sm text-red-500 text-center">
+      La imagen es obligatoria.
+    </div>
+  </article>
+
+  <button class="w-44 mx-auto px-4 py-2 mt-4 font-bold text-white bg-yellow-500 rounded-lg mb-16 hover:bg-yellow-600 focus:outline-none focus:ring focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed">
+    Crear Producto
+  </button>
+</form>
+
         </article>
     </article>
 </div>

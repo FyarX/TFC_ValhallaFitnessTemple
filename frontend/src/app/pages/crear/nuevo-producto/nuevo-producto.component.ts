@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-nuevo-producto',
-  imports: [ ReactiveFormsModule],
+  imports: [ ReactiveFormsModule, NgIf ],
   templateUrl: './nuevo-producto.component.html',
   styleUrl: './nuevo-producto.component.css'
 })
@@ -24,12 +24,13 @@ export class NuevoProductoComponent {
     stock: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)]) // Solo números enteros
   });
 
-
+  imagenTocada = false;
   selectedFile: File | null = null;
   onFileSelected(event: any): void {
   const fileInput = event.target as HTMLInputElement;
   if (fileInput.files && fileInput.files.length > 0) {
     this.selectedFile = fileInput.files[0];
+    this.imagenTocada = true;
   }
 }
 
@@ -50,4 +51,6 @@ export class NuevoProductoComponent {
     this.toastr.error('Por favor completa todos los campos correctamente.');
   }
 }
+
+
 }
