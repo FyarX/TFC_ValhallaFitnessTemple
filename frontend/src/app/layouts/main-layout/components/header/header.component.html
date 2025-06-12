@@ -129,7 +129,7 @@
         (click)="closeUserMenu()"
         *ngIf="isLoggedIn">
 
-        <li>Hola, {{nombreUsuario}}</li>
+        <li>Hola, {{ nombreUsuario || 'Invitado' }}</li>
         <li><a routerLink="/perfil/mis-clases">Mis clases</a></li>
         <li><a (click)="logout()">Cerrar sesión</a></li>
       </ul>

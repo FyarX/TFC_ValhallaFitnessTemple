@@ -1,33 +1,38 @@
 import { Injectable, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { inject } from '@angular/core';
 
 export interface UserInfo {
   id: number;
   name: string;
-  pfp: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private http = inject(HttpClient);
   readonly user = signal<UserInfo | null>(null);
 
-  cargarPerfil() {
-    this.http.get<UserInfo>('https://api.example.com/user').subscribe(
-      (data: any) => {
-        this.user.set(data);
-      },
-      (error: any) => {
-        console.error('Error al cargar el perfil:', error);
-      }
-    );
+  constructor() {
+    this.cargarDesdeLocalStorage();
   }
 
-  getPfp(): string {
+  private cargarDesdeLocalStorage() {
+    const usuarioGuardado = localStorage.getItem('usuario');
+    if (usuarioGuardado) {
+      try {
+        const datos = JSON.parse(usuarioGuardado);
+        this.user.set({
+          id: datos.id,
+          name: datos.nombre
+        });
+      } catch (e) {
+        console.error('Error al parsear el usuario del localStorage:', e);
+        this.user.set(null);
+      }
+    }
+  }
+
+  getUserName(): string {
     const user = this.user();
-    return `public/assets/img/${user?.pfp}` || 'public/assets/img/default.jpg';
-  } 
+    return user ? user.name : 'Invitado';
+  }
 }

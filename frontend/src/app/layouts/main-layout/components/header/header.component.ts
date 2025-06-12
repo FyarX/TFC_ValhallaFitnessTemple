@@ -3,6 +3,7 @@ import { LucideAngularModule, Menu, CircleUser, LUCIDE_ICONS, LucideIconProvider
 import { AuthService } from '../../../../core/services/auth/auth.service';
 import { NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { UserService } from '../../../../core/services/user/user.service';
 
 
 
@@ -21,8 +22,6 @@ import { RouterModule } from '@angular/router';
 })
 export class HeaderComponent {
   
-  //? Constructor
-  // constructor(private authService: AuthService) {} // Inyección del servicio de autenticación
 
   //? Ciclo de vida
   // ngOnInit(): void {} // Método que se ejecuta al inicializar el componente
@@ -37,6 +36,9 @@ export class HeaderComponent {
 
   // AuthService
   private authService = inject(AuthService); // Inyección del servicio de autenticación
+
+  // UserService
+  private userService = inject(UserService); // Inyección del servicio de usuario
 
   //? Eventos del menú desplegable
   openMenu = false;  // Estado del menú desplegable
@@ -70,5 +72,12 @@ export class HeaderComponent {
     localStorage.clear(); // Limpia el almacenamiento local
     location.reload(); // Recarga la página
   }
+
+  getUserName(): string {
+    const user = this.userService.getUserName(); // Obtiene el usuario del servicio
+    return user // Retorna el nombre del usuario 
+  }
+
+  nombreUsuario: string = this.getUserName(); // Nombre del usuario, inicializado al cargar el componente
 
 }
