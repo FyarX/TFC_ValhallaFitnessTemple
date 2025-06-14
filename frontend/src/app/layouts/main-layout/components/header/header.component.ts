@@ -21,13 +21,15 @@ import { UserService } from '../../../../core/services/user/user.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  
+  nombreUsuario: string = 'Invitado';
 
   //? Ciclo de vida
   // ngOnInit(): void {} // Método que se ejecuta al inicializar el componente
   ngOnInit() {
     this.isLoggedIn = this.authService.isLoggedIn(); // Inicializa el estado de si el usuario está loggeado o no
     this.userRole = this.authService.getUserRole(); // Inicializa el rol del usuario
+    this.userService.cargarDesdeLocalStorage(); // Carga el usuario desde el almacenamiento local
+    this.nombreUsuario = this.getUserName(); // Obtiene el nombre del usuario al cargar el componente
   }
 
   //? Servicios
@@ -77,7 +79,4 @@ export class HeaderComponent {
     const user = this.userService.getUserName(); // Obtiene el usuario del servicio
     return user // Retorna el nombre del usuario 
   }
-
-  nombreUsuario: string = this.getUserName(); // Nombre del usuario, inicializado al cargar el componente
-
 }

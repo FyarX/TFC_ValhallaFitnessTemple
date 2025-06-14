@@ -15,7 +15,7 @@ export class UserService {
     this.cargarDesdeLocalStorage();
   }
 
-  private cargarDesdeLocalStorage() {
+  public cargarDesdeLocalStorage() {
     const usuarioGuardado = localStorage.getItem('usuario');
     if (usuarioGuardado) {
       try {
