@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angula
 import { HttpClient } from '@angular/common/http';
 import { NgIf } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nuevo-producto',
@@ -15,7 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 
 export class NuevoProductoComponent {
 
-  constructor( private http: HttpClient, private toastr: ToastrService) {}
+  constructor( private http: HttpClient, private toastr: ToastrService, private router: Router ) {}
 
   nuevoProductoForm = new FormGroup({
     nombre: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-zÁÉÍÓÚÑáéíóúñ\s]{3,30}$/)]),
@@ -44,7 +45,10 @@ export class NuevoProductoComponent {
     formData.append('imagen', this.selectedFile);
 
     this.http.post('https://backend-valhallaft.onrender.com/api/productos', formData).subscribe({
-      next: () => this.toastr.success('Producto creado exitosamente'),
+      next: () => {
+        this.toastr.success('Producto creado exitosamente');
+        this.router.navigate(['/productos']);
+      },
       error: (error) => this.toastr.error('Error al crear el producto: ' + error.message)
     });
   } else {

@@ -27,6 +27,7 @@ module.exports = {
         'fade-in': 'fadeIn 1s ease-out both',
         'slide-in-left': 'slide-in-left 1s ease-out both',
         'slide-in-right': 'slide-in-right 1s ease-out both',
+        'zoom-in': 'zoomIn 1s ease-out both' ,
       },
       keyframes: {
         'fadeIn': {
@@ -41,6 +42,10 @@ module.exports = {
           '0%': { transform: 'translateX(100%)', opacity: '0' },
           '100%': { transform: 'translateX(0)', opacity: '1' },
         },
+        'zoom-in': {
+          '0%': { transform: 'scale(0.95)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+         },
       },
     },
   },

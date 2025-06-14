@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
@@ -13,7 +14,7 @@ import { NgIf } from '@angular/common';
 })
 export class NuevaClaseComponent {
 
-  constructor(private claseService: ClaseService, private toastr: ToastrService) {}
+  constructor(private claseService: ClaseService, private toastr: ToastrService, private router: Router) {}
 
   nuevaClaseForm = new FormGroup({
     nombre: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-zÁÉÍÓÚÑáéíóúñ\s]{3,30}$/)]),
@@ -29,7 +30,10 @@ export class NuevaClaseComponent {
       formData.append('fecha', this.nuevaClaseForm.get('fecha')?.value ?? '');
 
       this.claseService.crearClase(formData).subscribe({
-      next: (res) => this.toastr.success('Clase creada exitosamente'),
+      next: (res) => {
+        this.toastr.success('Clase creada exitosamente');
+        this.router.navigate(['/clases']);
+      },
       error: (err) => this.toastr.error('Error al crear la clase: ' + err.message),
     });
 
