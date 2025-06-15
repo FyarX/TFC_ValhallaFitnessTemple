@@ -131,11 +131,10 @@
 
         <li>Hola, {{ nombreUsuario }}</li>
         <li><a routerLink="/perfil/mis-clases">Mis clases</a></li>
-        <li><a (click)="logout()">Cerrar sesión</a></li>
+        <li class="text-red-400 cursor-pointer"><a (click)="logout()">Cerrar sesión</a></li>
       </ul>
 
     </div>
-
     <!-- ▸ Acciones / usuario ----------------------------------------- -->
     <section id="header_actions" class="relative flex items-center gap-4" *ngIf="!isLoggedIn">
       <!-- Botón Iniciar Sesión -->
